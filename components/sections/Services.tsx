@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import Script from 'next/script';
 
 const WHATSAPP_URL = `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}?text=Hi%2C+I+need+battery+service`;
@@ -13,7 +14,7 @@ interface Service {
   descAr: string;
   ctaEn: string;
   ctaAr: string;
-  href: string;
+  slug: string;
   schemaName: string;
   schemaDesc: string;
 }
@@ -25,9 +26,9 @@ const SERVICES: Service[] = [
     titleAr: 'تغيير البطارية',
     descEn: 'We deliver and install the right battery for your car on-site — all brands, all models.',
     descAr: 'نوصل ونركب البطارية المناسبة لسيارتك في مكانك',
-    ctaEn: 'Order Now →',
-    ctaAr: 'اطلب الآن ←',
-    href: WHATSAPP_URL,
+    ctaEn: 'Learn More →',
+    ctaAr: '← اعرف أكثر',
+    slug: 'battery-replacement',
     schemaName: 'Car Battery Replacement Qatar',
     schemaDesc: 'On-site car battery delivery and installation service across Qatar. All brands and models.',
   },
@@ -37,9 +38,9 @@ const SERVICES: Service[] = [
     titleAr: 'شحن طوارئ',
     descEn: 'Battery flat? Our team reaches you in 30 minutes anywhere in Qatar.',
     descAr: 'بطاريتك فرغت؟ نوصلك خلال 30 دقيقة في أي مكان بقطر',
-    ctaEn: 'Call Now →',
-    ctaAr: 'اتصل الآن ←',
-    href: TEL_URL,
+    ctaEn: 'Learn More →',
+    ctaAr: '← اعرف أكثر',
+    slug: 'jump-start',
     schemaName: 'Emergency Jump Start Qatar',
     schemaDesc: 'Emergency battery jump start service reaching customers within 30 minutes across Qatar.',
   },
@@ -49,9 +50,9 @@ const SERVICES: Service[] = [
     titleAr: 'فحص كهرباء السيارة',
     descEn: 'Alternator, wiring, fuses — full electrical check and repair at your location.',
     descAr: 'دينامو، أسلاك، فيوزات — فحص وإصلاح كامل في مكانك',
-    ctaEn: 'Get Diagnosis →',
-    ctaAr: 'احجز فحص ←',
-    href: WHATSAPP_URL,
+    ctaEn: 'Learn More →',
+    ctaAr: '← اعرف أكثر',
+    slug: 'electrical-repair',
     schemaName: 'Electrical Repair Qatar',
     schemaDesc: 'Full car electrical diagnostics and repair service — alternator, wiring, fuses — at customer location in Qatar.',
   },
@@ -132,7 +133,7 @@ export default function Services({ lang = 'en' }: ServicesProps) {
             >
               {ar
                 ? 'كل ما تحتاجه سيارتك — في مكانك'
-                : <>Everything Your Car Needs — <span style={{ color: '#FFD600' }}>At Your Location</span></>
+                : <>Everything Your Car Needs — <span style={{ color: 'var(--c-accent)' }}>At Your Location</span></>
               }
             </h2>
 
@@ -193,8 +194,8 @@ function ServiceCard({ service, ar }: { service: Service; ar: boolean }) {
       }}
       onMouseEnter={(e) => {
         const el = e.currentTarget;
-        el.style.borderColor = '#FFD600';
-        el.style.boxShadow = '0 8px 32px rgba(255,214,0,0.12)';
+        el.style.borderColor = 'var(--c-accent)';
+        el.style.boxShadow = '0 8px 32px rgba(var(--c-accent-rgb),0.12)';
       }}
       onMouseLeave={(e) => {
         const el = e.currentTarget;
@@ -254,10 +255,8 @@ function ServiceCard({ service, ar }: { service: Service; ar: boolean }) {
       </p>
 
       {/* CTA */}
-      <a
-        href={service.href}
-        target={service.href.startsWith('http') ? '_blank' : undefined}
-        rel={service.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+      <Link
+        href={ar ? `/ar/services/${service.slug}` : `/services/${service.slug}`}
         aria-label={`${ar ? service.ctaAr : service.ctaEn} — ${ar ? service.titleAr : service.titleEn}`}
         style={{
           display: 'inline-flex',
@@ -267,7 +266,7 @@ function ServiceCard({ service, ar }: { service: Service; ar: boolean }) {
           fontSize: '0.9375rem',
           color: '#111111',
           textDecoration: 'none',
-          borderBottom: '2px solid #FFD600',
+          borderBottom: '2px solid var(--c-accent)',
           paddingBottom: '1px',
           width: 'fit-content',
           transition: 'color 0.15s',
@@ -276,7 +275,7 @@ function ServiceCard({ service, ar }: { service: Service; ar: boolean }) {
         onMouseLeave={(e) => (e.currentTarget.style.color = '#111111')}
       >
         {ar ? service.ctaAr : service.ctaEn}
-      </a>
+      </Link>
     </article>
   );
 }
@@ -286,9 +285,9 @@ function ServiceCard({ service, ar }: { service: Service; ar: boolean }) {
 function BatteryIcon() {
   return (
     <svg width="26" height="16" viewBox="0 0 26 16" fill="none" aria-hidden="true">
-      <rect x="0.75" y="0.75" width="22.5" height="14.5" rx="2.25" stroke="#FFD600" strokeWidth="1.5" />
-      <rect x="23.5" y="5.5" width="2.25" height="5" rx="1" fill="#FFD600" />
-      <path d="M14.5 2L9 9h4L11 14 17 7h-4l1.5-5Z" fill="#FFD600" />
+      <rect x="0.75" y="0.75" width="22.5" height="14.5" rx="2.25" stroke="var(--c-accent)" strokeWidth="1.5" />
+      <rect x="23.5" y="5.5" width="2.25" height="5" rx="1" fill="var(--c-accent)" />
+      <path d="M14.5 2L9 9h4L11 14 17 7h-4l1.5-5Z" fill="var(--c-accent)" />
     </svg>
   );
 }
@@ -298,8 +297,8 @@ function BoltIcon() {
     <svg width="22" height="26" viewBox="0 0 22 26" fill="none" aria-hidden="true">
       <path
         d="M13 1L1 15h8.5L7 25 21 11h-9L13 1Z"
-        fill="#FFD600"
-        stroke="#FFD600"
+        fill="var(--c-accent)"
+        stroke="var(--c-accent)"
         strokeWidth="0.5"
         strokeLinejoin="round"
       />
@@ -312,7 +311,7 @@ function WrenchIcon() {
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path
         d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.77z"
-        stroke="#FFD600"
+        stroke="var(--c-accent)"
         strokeWidth="1.75"
         strokeLinecap="round"
         strokeLinejoin="round"
