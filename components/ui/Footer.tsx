@@ -7,11 +7,11 @@ const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=Hi%2C+I+need+battery
 const DISPLAY_NUMBER = `+${WHATSAPP_NUMBER.slice(0, 3)} ${WHATSAPP_NUMBER.slice(3, 7)} ${WHATSAPP_NUMBER.slice(7)}`;
 
 const QUICK_LINKS = [
-  { label: 'Services', labelAr: 'الخدمات', href: '#services' },
-  { label: 'How It Works', labelAr: 'كيف يعمل', href: '#how' },
-  { label: 'Areas We Cover', labelAr: 'المناطق', href: '#areas' },
-  { label: 'Blog', labelAr: 'المدونة', href: '/blog' },
-  { label: 'Contact', labelAr: 'تواصل معنا', href: '#contact' },
+  { label: 'Services',      labelAr: 'الخدمات',    href: '/#services', hrefAr: '/ar/#services' },
+  { label: 'How It Works',  labelAr: 'كيف يعمل',   href: '/#how',      hrefAr: '/ar/#how' },
+  { label: 'Areas We Cover',labelAr: 'المناطق',     href: '/#areas',    hrefAr: '/ar/#areas' },
+  { label: 'Blog',          labelAr: 'المدونة',     href: '/blog',      hrefAr: '/ar/blog' },
+  { label: 'Contact',       labelAr: 'تواصل معنا',  href: '/#contact',  hrefAr: '/ar/#contact' },
 ];
 
 interface FooterProps {
@@ -92,8 +92,8 @@ export default function Footer({ lang = 'en' }: FooterProps) {
             <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.625rem' }}>
               {QUICK_LINKS.map((link) => (
                 <li key={link.href}>
-                  <a
-                    href={link.href}
+                  <Link
+                    href={ar ? link.hrefAr : link.href}
                     style={{
                       fontFamily: 'var(--font-inter), sans-serif',
                       fontSize: '0.9375rem',
@@ -109,7 +109,7 @@ export default function Footer({ lang = 'en' }: FooterProps) {
                   >
                     <span aria-hidden="true" style={{ color: '#999999', fontSize: '0.75rem' }}>→</span>
                     {ar ? link.labelAr : link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
