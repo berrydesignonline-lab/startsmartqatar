@@ -3,6 +3,9 @@ import { client } from '@/lib/sanity';
 import { ALL_POSTS_QUERY } from '@/lib/queries';
 import type { PostCard } from '@/lib/types';
 import BlogCard from '@/components/ui/BlogCard';
+import Navbar from '@/components/ui/Navbar';
+import Footer from '@/components/ui/Footer';
+import FloatingCTA from '@/components/ui/FloatingCTA';
 
 export const metadata: Metadata = {
   title: 'Battery & Car Tips — StartSmart Qatar Blog',
@@ -24,6 +27,8 @@ export default async function BlogPage() {
   }
 
   return (
+    <>
+    <Navbar />
     <main style={{ backgroundColor: '#FFFFFF', minHeight: '100vh', paddingTop: '80px' }}>
       {/* Header */}
       <div
@@ -106,5 +111,8 @@ export default async function BlogPage() {
         )}
       </div>
     </main>
+    <Footer />
+    <FloatingCTA />
+    </>
   );
 }

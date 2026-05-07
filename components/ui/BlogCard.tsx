@@ -5,20 +5,31 @@ import Link from 'next/link';
 import type { PostCard } from '@/lib/types';
 import { urlFor } from '@/lib/sanity';
 
-export default function BlogCard({ post }: { post: PostCard }) {
+interface BlogCardProps {
+  post: PostCard;
+  lang?: 'en' | 'ar';
+}
+
+export default function BlogCard({ post, lang = 'en' }: BlogCardProps) {
+  const ar = lang === 'ar';
   const imageUrl = post.mainImage
     ? urlFor(post.mainImage).width(600).height(340).fit('crop').url()
     : null;
 
+  const title = ar ? (post.titleAr ?? post.title) : post.title;
+  const excerpt = ar ? (post.excerptAr ?? post.excerpt) : post.excerpt;
+  const href = ar ? `/ar/blog/${post.slug.current}` : `/blog/${post.slug.current}`;
+
   const formattedDate = post.publishedAt
-    ? new Date(post.publishedAt).toLocaleDateString('en-QA', {
+    ? new Date(post.publishedAt).toLocaleDateString(ar ? 'ar-QA' : 'en-QA', {
         year: 'numeric', month: 'long', day: 'numeric',
       })
     : null;
 
   return (
-    <Link href={`/blog/${post.slug.current}`} style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column' }}>
+    <Link href={href} style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column' }}>
       <article
+        dir={ar ? 'rtl' : 'ltr'}
         style={{
           border: '1px solid #E5E5E5',
           borderRadius: '0.75rem',
@@ -68,18 +79,18 @@ export default function BlogCard({ post }: { post: PostCard }) {
             )}
           </div>
 
-          <h2 style={{ fontFamily: 'var(--font-inter), sans-serif', fontWeight: 700, fontSize: '1.0625rem', color: '#111111', margin: 0, lineHeight: 1.4 }}>
-            {post.title}
+          <h2 style={{ fontFamily: ar ? 'var(--font-cairo), sans-serif' : 'var(--font-inter), sans-serif', fontWeight: 700, fontSize: '1.0625rem', color: '#111111', margin: 0, lineHeight: 1.4 }}>
+            {title}
           </h2>
 
-          {post.excerpt && (
-            <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontWeight: 400, fontSize: '0.9375rem', color: '#555555', margin: 0, lineHeight: 1.65, flexGrow: 1, display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
-              {post.excerpt}
+          {excerpt && (
+            <p style={{ fontFamily: ar ? 'var(--font-cairo), sans-serif' : 'var(--font-inter), sans-serif', fontWeight: 400, fontSize: '0.9375rem', color: '#555555', margin: 0, lineHeight: 1.65, flexGrow: 1, display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+              {excerpt}
             </p>
           )}
 
-          <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontWeight: 600, fontSize: '0.875rem', color: '#111111', borderBottom: '2px solid #FFD600', paddingBottom: '1px', width: 'fit-content', marginTop: '0.25rem' }}>
-            Read more →
+          <span style={{ fontFamily: ar ? 'var(--font-cairo), sans-serif' : 'var(--font-inter), sans-serif', fontWeight: 600, fontSize: '0.875rem', color: '#111111', borderBottom: '2px solid #FFD600', paddingBottom: '1px', width: 'fit-content', marginTop: '0.25rem' }}>
+            {ar ? '← اقرأ المزيد' : 'Read more →'}
           </span>
         </div>
       </article>

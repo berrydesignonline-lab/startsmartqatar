@@ -7,6 +7,7 @@ import Areas from '@/components/sections/Areas';
 import WhatsAppCTA from '@/components/sections/WhatsAppCTA';
 import ContactForm from '@/components/sections/ContactForm';
 import Footer from '@/components/ui/Footer';
+import FloatingCTA from '@/components/ui/FloatingCTA';
 
 export default function HomePage() {
   return (
@@ -20,6 +21,7 @@ export default function HomePage() {
       <WhatsAppCTA />
       <ContactForm />
       <Footer />
+      <FloatingCTA />
     </>
   );
 }

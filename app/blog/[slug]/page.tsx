@@ -6,6 +6,10 @@ import { PortableText } from '@portabletext/react';
 import { client, urlFor } from '@/lib/sanity';
 import { POST_BY_SLUG_QUERY, ALL_SLUGS_QUERY, LATEST_POSTS_QUERY } from '@/lib/queries';
 import type { PostFull, PostCard, Category } from '@/lib/types';
+import Navbar from '@/components/ui/Navbar';
+import Footer from '@/components/ui/Footer';
+import FloatingCTA from '@/components/ui/FloatingCTA';
+import RelatedCard from '@/components/ui/RelatedCard';
 
 export const revalidate = 60;
 
@@ -93,6 +97,7 @@ export default async function BlogPostPage(
 
   return (
     <>
+      <Navbar />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -116,19 +121,9 @@ export default async function BlogPostPage(
             flexWrap: 'wrap',
           }}
         >
-          <Link href="/" style={{ color: '#888888', textDecoration: 'none' }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = '#FFD600')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = '#888888')}
-          >
-            Home
-          </Link>
+          <Link href="/" className="breadcrumb-link">Home</Link>
           <span aria-hidden="true">›</span>
-          <Link href="/blog" style={{ color: '#888888', textDecoration: 'none' }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = '#FFD600')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = '#888888')}
-          >
-            Blog
-          </Link>
+          <Link href="/blog" className="breadcrumb-link">Blog</Link>
           <span aria-hidden="true">›</span>
           <span style={{ color: '#111111' }}>{post.title}</span>
         </nav>
@@ -230,23 +225,15 @@ export default async function BlogPostPage(
             </div>
           )}
 
-          {/* Arabic body */}
-          {post.bodyAr && (
-            <div lang="ar" dir="rtl" style={{ marginTop: '2rem' }} className="prose-content">
-              <h2
-                style={{
-                  fontFamily: 'var(--font-cairo), sans-serif',
-                  fontWeight: 700,
-                  fontSize: '1.25rem',
-                  color: '#888888',
-                  borderTop: '1px solid #E5E5E5',
-                  paddingTop: '2rem',
-                  marginBottom: '1rem',
-                }}
+          {/* Link to Arabic version */}
+          {post.titleAr && (
+            <div style={{ marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid #E5E5E5' }}>
+              <Link
+                href={`/ar/blog/${slug}`}
+                style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.9375rem', color: '#888888', textDecoration: 'none' }}
               >
-                النسخة العربية
-              </h2>
-              <PortableText value={post.bodyAr} components={portableTextComponents} />
+                🇶🇦 اقرأ هذا المقال بالعربية
+              </Link>
             </div>
           )}
 
@@ -350,64 +337,15 @@ export default async function BlogPostPage(
         [dir="rtl"] .prose-content ul, [dir="rtl"] .prose-content ol { padding-left: 0; padding-right: 1.5rem; }
         [dir="rtl"] .prose-content blockquote { border-left: none; border-right: 4px solid #FFD600; }
         [dir="rtl"] .prose-content { font-family: var(--font-cairo), sans-serif; }
+        .breadcrumb-link { color: #888888; text-decoration: none; transition: color 0.15s; }
+        .breadcrumb-link:hover { color: #FFD600; }
       `}</style>
+      <Footer />
+      <FloatingCTA />
     </>
   );
 }
 
-/* ── Related card ──────────────────────────────────────── */
-function RelatedCard({ post }: { post: PostCard }) {
-  const imageUrl = post.mainImage
-    ? urlFor(post.mainImage).width(400).height(220).fit('crop').url()
-    : null;
-
-  return (
-    <Link href={`/blog/${post.slug.current}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-      <article
-        style={{
-          backgroundColor: '#FFFFFF',
-          border: '1px solid #E5E5E5',
-          borderRadius: '0.75rem',
-          overflow: 'hidden',
-          transition: 'border-color 0.2s',
-        }}
-        onMouseEnter={(e) => (e.currentTarget.style.borderColor = '#FFD600')}
-        onMouseLeave={(e) => (e.currentTarget.style.borderColor = '#E5E5E5')}
-      >
-        <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', backgroundColor: '#1A1A1A' }}>
-          {imageUrl ? (
-            <Image
-              src={imageUrl}
-              alt={post.mainImage?.alt ?? post.title}
-              fill
-              sizes="(max-width: 768px) 100vw, 400px"
-              style={{ objectFit: 'cover' }}
-              loading="lazy"
-            />
-          ) : (
-            <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <span style={{ fontSize: '1.5rem' }}>⚡</span>
-            </div>
-          )}
-        </div>
-        <div style={{ padding: '1rem' }}>
-          <h3
-            style={{
-              fontFamily: 'var(--font-inter), sans-serif',
-              fontWeight: 600,
-              fontSize: '0.9375rem',
-              color: '#111111',
-              margin: 0,
-              lineHeight: 1.4,
-            }}
-          >
-            {post.title}
-          </h3>
-        </div>
-      </article>
-    </Link>
-  );
-}
 
 /* ── Portable text components ──────────────────────────── */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
