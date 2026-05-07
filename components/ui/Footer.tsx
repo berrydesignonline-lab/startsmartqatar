@@ -24,7 +24,7 @@ export default function Footer({ lang = 'en' }: FooterProps) {
   return (
     <footer
       dir={ar ? 'rtl' : 'ltr'}
-      style={{ backgroundColor: '#111111', color: '#888888' }}
+      style={{ backgroundColor: '#111111', color: '#CCCCCC' }}
     >
       {/* Main grid */}
       <div
@@ -53,22 +53,22 @@ export default function Footer({ lang = 'en' }: FooterProps) {
               }}
             >
               <span style={{ color: '#FFFFFF' }}>Start</span>
-              <span style={{ color: '#FFD600' }}>Smart</span>
+              <span style={{ color: 'var(--c-accent)' }}>Smart</span>
             </span>
           </Link>
 
           {/* Tagline */}
-          <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.9375rem', color: '#888888', margin: 0, lineHeight: 1.55 }}>
+          <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.9375rem', color: '#CCCCCC', margin: 0, lineHeight: 1.55 }}>
             {ar ? 'بطارية وكهرباء — نجي عندك' : 'Battery & Electrical — Delivered to You'}
           </p>
 
           {/* City coverage — SEO */}
-          <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.8125rem', color: '#555555', margin: 0, lineHeight: 1.6 }}>
+          <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.8125rem', color: '#999999', margin: 0, lineHeight: 1.6 }}>
             Serving Doha, Al Rayyan, Lusail, The Pearl, West Bay &amp; all Qatar
           </p>
 
           {/* Copyright */}
-          <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.8125rem', color: '#555555', margin: 0 }}>
+          <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.8125rem', color: '#999999', margin: 0 }}>
             © {new Date().getFullYear()} StartSmart Qatar. All rights reserved.
           </p>
         </div>
@@ -97,17 +97,17 @@ export default function Footer({ lang = 'en' }: FooterProps) {
                     style={{
                       fontFamily: 'var(--font-inter), sans-serif',
                       fontSize: '0.9375rem',
-                      color: '#888888',
+                      color: '#CCCCCC',
                       textDecoration: 'none',
                       transition: 'color 0.15s',
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: '0.375rem',
                     }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = '#FFD600')}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = '#888888')}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--c-accent)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = '#CCCCCC')}
                   >
-                    <span aria-hidden="true" style={{ color: '#555555', fontSize: '0.75rem' }}>→</span>
+                    <span aria-hidden="true" style={{ color: '#999999', fontSize: '0.75rem' }}>→</span>
                     {ar ? link.labelAr : link.label}
                   </a>
                 </li>
@@ -157,16 +157,16 @@ export default function Footer({ lang = 'en' }: FooterProps) {
 
           {/* Hours */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <span aria-hidden="true" style={{ color: '#FFD600', fontSize: '0.9rem' }}>⏱</span>
-            <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.9375rem', color: '#888888' }}>
+            <span aria-hidden="true" style={{ color: 'var(--c-accent)', fontSize: '0.9rem' }}>⏱</span>
+            <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.9375rem', color: '#CCCCCC' }}>
               {ar ? 'متاح 24/7 — كل يوم' : '24/7 — Every Day'}
             </span>
           </div>
 
           {/* Location */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <span aria-hidden="true" style={{ color: '#FFD600', fontSize: '0.9rem' }}>📍</span>
-            <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.9375rem', color: '#888888' }}>
+            <span aria-hidden="true" style={{ color: 'var(--c-accent)', fontSize: '0.9rem' }}>📍</span>
+            <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.9375rem', color: '#CCCCCC' }}>
               {ar ? 'قطر — جميع المناطق' : 'Qatar — All Areas'}
             </span>
           </div>
@@ -182,13 +182,13 @@ export default function Footer({ lang = 'en' }: FooterProps) {
               gap: '0.5rem',
               fontFamily: 'var(--font-inter), sans-serif',
               fontSize: '0.875rem',
-              color: '#888888',
+              color: '#CCCCCC',
               textDecoration: 'none',
               marginTop: '0.25rem',
               transition: 'color 0.15s',
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = '#FFD600')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = '#888888')}
+            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--c-accent)')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = '#CCCCCC')}
           >
             <GoogleIcon />
             <span>{ar ? 'تقييمنا على جوجل' : 'Find us on Google'}</span>
@@ -210,15 +210,15 @@ export default function Footer({ lang = 'en' }: FooterProps) {
             gap: '0.5rem',
           }}
         >
-          <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.8125rem', color: '#555555' }}>
+          <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.8125rem', color: '#999999' }}>
             Built by{' '}
             <a
               href="https://berrydesign.online"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ color: '#888888', textDecoration: 'none', transition: 'color 0.15s' }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = '#FFD600')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = '#888888')}
+              style={{ color: '#CCCCCC', textDecoration: 'none', transition: 'color 0.15s' }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--c-accent)')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = '#CCCCCC')}
             >
               Berry Design 🍓
             </a>
@@ -228,12 +228,12 @@ export default function Footer({ lang = 'en' }: FooterProps) {
             style={{
               fontFamily: 'var(--font-inter), sans-serif',
               fontSize: '0.8125rem',
-              color: '#555555',
+              color: '#999999',
               textDecoration: 'none',
               transition: 'color 0.15s',
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = '#888888')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = '#555555')}
+            onMouseEnter={(e) => (e.currentTarget.style.color = '#CCCCCC')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = '#999999')}
           >
             Privacy Policy
           </a>
@@ -255,9 +255,9 @@ export default function Footer({ lang = 'en' }: FooterProps) {
 function BatteryLogo() {
   return (
     <svg width="32" height="20" viewBox="0 0 36 22" fill="none" aria-hidden="true">
-      <rect x="0.75" y="0.75" width="30.5" height="20.5" rx="3.25" fill="#111111" stroke="#FFD600" strokeWidth="1.5" />
-      <rect x="31.5" y="7.5" width="4" height="7" rx="1.5" fill="#FFD600" />
-      <path d="M19.5 3.5L12 12h5.5L14 18.5 22 10h-5.5L19.5 3.5Z" fill="#FFD600" />
+      <rect x="0.75" y="0.75" width="30.5" height="20.5" rx="3.25" fill="#111111" stroke="var(--c-accent)" strokeWidth="1.5" />
+      <rect x="31.5" y="7.5" width="4" height="7" rx="1.5" fill="var(--c-accent)" />
+      <path d="M19.5 3.5L12 12h5.5L14 18.5 22 10h-5.5L19.5 3.5Z" fill="var(--c-accent)" />
     </svg>
   );
 }
