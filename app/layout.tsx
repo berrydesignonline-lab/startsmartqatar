@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter, Cairo } from 'next/font/google';
 import Script from 'next/script';
+import { ThemeProvider } from '@/lib/theme';
 import './globals.css';
 
 const inter = Inter({
@@ -73,7 +74,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#FFD600',
+  themeColor: 'var(--c-accent)',
 };
 
 const localBusinessSchema = {
@@ -84,41 +85,69 @@ const localBusinessSchema = {
   '@id': SITE_URL,
   url: SITE_URL,
   telephone: `+${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '97400000000'}`,
-  description:
-    'On-demand car battery delivery and electrical repair service in Qatar. Available 24/7.',
+  description: 'On-demand car battery delivery and electrical repair service in Qatar. Available 24/7. We arrive in 30 minutes.',
+  priceRange: 'QAR 150–500',
+  currenciesAccepted: 'QAR',
+  paymentAccepted: 'Cash, Credit Card',
   address: {
     '@type': 'PostalAddress',
+    streetAddress: 'Doha',
+    addressLocality: 'Doha',
     addressCountry: 'QA',
-    addressRegion: 'Doha',
+    addressRegion: 'Ad Dawhah',
   },
   geo: {
     '@type': 'GeoCoordinates',
     latitude: 25.2854,
     longitude: 51.531,
   },
-  areaServed: {
-    '@type': 'Country',
-    name: 'Qatar',
-  },
+  areaServed: [
+    { '@type': 'City', name: 'Doha' },
+    { '@type': 'City', name: 'Al Rayyan' },
+    { '@type': 'City', name: 'Al Wakrah' },
+    { '@type': 'City', name: 'Lusail' },
+    { '@type': 'City', name: 'Al Khor' },
+  ],
   openingHours: 'Mo-Su 00:00-23:59',
-  priceRange: 'QAR',
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
-    name: 'Car Battery & Electrical Services',
+    name: 'Car Battery & Electrical Services Qatar',
     itemListElement: [
       {
         '@type': 'Offer',
-        itemOffered: { '@type': 'Service', name: 'Battery Replacement Qatar' },
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Car Battery Replacement Qatar',
+          description: 'On-site car battery replacement anywhere in Qatar. We come to you in 30 minutes.',
+          url: `${SITE_URL}/services/battery-replacement`,
+        },
       },
       {
         '@type': 'Offer',
-        itemOffered: { '@type': 'Service', name: 'Emergency Jump Start Qatar' },
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Emergency Jump Start Qatar',
+          description: '24/7 emergency jump start service across all Qatar.',
+          url: `${SITE_URL}/services/jump-start`,
+        },
       },
       {
         '@type': 'Offer',
-        itemOffered: { '@type': 'Service', name: 'Car Electrical Repair Qatar' },
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Car Electrical Repair Qatar',
+          description: 'Mobile car electrical diagnosis and repair in Qatar.',
+          url: `${SITE_URL}/services/electrical-repair`,
+        },
       },
     ],
+  },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '5.0',
+    reviewCount: '1',
+    bestRating: '5',
+    worstRating: '1',
   },
   sameAs: [
     `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '97400000000'}`,
@@ -131,9 +160,19 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${cairo.variable}`}>
+    <html lang="en" data-theme="dark" className={`${inter.variable} ${cairo.variable}`}>
+      <head>
+        {/* Prevent flash of unstyled theme on load */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();`,
+          }}
+        />
+      </head>
       <body>
-        {children}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
         <Script
           id="local-business-schema"
           type="application/ld+json"
