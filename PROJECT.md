@@ -180,7 +180,7 @@ components/
     ContactForm.tsx   ← Request form + FAQ accordion
   ui/
     Navbar.tsx        ← Fixed top nav + dark/light toggle + language toggle
-    Footer.tsx        ← 3-col footer
+    Footer.tsx        ← 3-col footer (text: #CCCCCC on black; links use /#section format)
     FloatingCTA.tsx   ← Floating WhatsApp button (mobile, bottom-right)
     BlogCard.tsx      ← Blog listing card
     RelatedCard.tsx   ← Related posts card
@@ -213,10 +213,16 @@ sanity/schemas/
 → `components/sections/Hero.tsx` — EN/AR H1 near top of component
 
 ### Change services (cards)
-→ `components/sections/Services.tsx` — `SERVICES` array (icon, titleEn/Ar, descEn/Ar, ctaEn/Ar, href)
+→ `components/sections/Services.tsx` — `SERVICES` array (icon, titleEn/Ar, descEn/Ar, ctaEn/Ar, slug)
+→ Each card links to `/services/<slug>` (EN) or `/ar/services/<slug>` (AR) — determined by the `slug` field
+→ CTA text is "Learn More →" — change `ctaEn` / `ctaAr` per service in the array
 
 ### Change nav links
 → `components/ui/Navbar.tsx` — `NAV_LINKS` array
+
+### Change footer quick links
+→ `components/ui/Footer.tsx` — `QUICK_LINKS` array
+→ Each entry has `href` (EN) and `hrefAr` (AR) — anchor links must use `/#section` format (not `#section`) to work from any page
 
 ### Change FAQ questions
 → `components/sections/ContactForm.tsx` — `FAQ_ITEMS` array
