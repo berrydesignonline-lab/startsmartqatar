@@ -19,6 +19,18 @@ export default function BatteryReplacementArPage() {
   return (
     <>
       <Navbar />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          name: 'تبديل بطارية السيارة قطر',
+          description: 'خدمة تبديل بطارية السيارة في موقعك في قطر خلال 30 دقيقة. متاح 24/7.',
+          provider: { '@type': 'LocalBusiness', name: 'StartSmart Qatar', url: 'https://startsmartqa.com' },
+          areaServed: { '@type': 'Country', name: 'Qatar' },
+          url: 'https://startsmartqa.com/ar/services/battery-replacement',
+        }) }}
+      />
       <main dir="rtl" lang="ar" style={{ backgroundColor: 'var(--c-bg)', color: 'var(--c-text)', paddingTop: '80px', minHeight: '100vh', fontFamily: 'var(--font-cairo), sans-serif' }}>
         <section style={{ maxWidth: '800px', margin: '0 auto', padding: '4rem 1.5rem 2rem', textAlign: 'center' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.375rem', border: '1px solid rgba(var(--c-accent-rgb),0.35)', borderRadius: '9999px', padding: '0.3rem 0.875rem', fontSize: '0.8125rem', fontWeight: 600, color: 'var(--c-accent)', backgroundColor: 'rgba(var(--c-accent-rgb),0.06)', marginBottom: '1.5rem' }}>

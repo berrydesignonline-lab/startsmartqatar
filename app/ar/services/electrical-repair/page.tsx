@@ -19,6 +19,18 @@ export default function ElectricalRepairArPage() {
   return (
     <>
       <Navbar />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          name: 'إصلاح كهرباء السيارة المتنقل قطر',
+          description: 'إصلاح وتشخيص كهرباء السيارة في موقعك في قطر. دينامو، فيوزات، أسلاك، حساسات.',
+          provider: { '@type': 'LocalBusiness', name: 'StartSmart Qatar', url: 'https://startsmartqa.com' },
+          areaServed: { '@type': 'Country', name: 'Qatar' },
+          url: 'https://startsmartqa.com/ar/services/electrical-repair',
+        }) }}
+      />
       <main dir="rtl" lang="ar" style={{ backgroundColor: 'var(--c-bg)', color: 'var(--c-text)', paddingTop: '80px', minHeight: '100vh', fontFamily: 'var(--font-cairo), sans-serif' }}>
         <section style={{ maxWidth: '800px', margin: '0 auto', padding: '4rem 1.5rem 2rem', textAlign: 'center' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.375rem', border: '1px solid rgba(var(--c-accent-rgb),0.35)', borderRadius: '9999px', padding: '0.3rem 0.875rem', fontSize: '0.8125rem', fontWeight: 600, color: 'var(--c-accent)', backgroundColor: 'rgba(var(--c-accent-rgb),0.06)', marginBottom: '1.5rem' }}>
@@ -34,6 +46,18 @@ export default function ElectricalRepairArPage() {
             style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', backgroundColor: '#25D366', color: '#fff', fontWeight: 700, fontSize: '1.125rem', padding: '1rem 2rem', borderRadius: '0.625rem', textDecoration: 'none' }}>
             اطلب إصلاح الكهرباء
           </a>
+        </section>
+        <section style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem 1.5rem 4rem' }}>
+          <h2 style={{ fontWeight: 700, fontSize: '1.75rem', marginBottom: '1.5rem' }}>
+            ماذا <span style={{ color: 'var(--c-accent)' }}>نصلح</span>
+          </h2>
+          <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: '0.75rem' }}>
+            {['عطل الدينامو', 'بطارية فارغة', 'فيوزات محترقة', 'أسلاك معطوبة', 'أضواء تحذيرية', 'موتور البادئ', 'حساسات و ECU', 'أعطال كهرباء المكيف'].map((item) => (
+              <li key={item} style={{ padding: '0.875rem 1rem', backgroundColor: 'var(--c-surface)', borderRadius: '0.625rem', border: '1px solid var(--c-border)', color: 'var(--c-text)', fontSize: '0.9375rem' }}>
+                ✓ {item}
+              </li>
+            ))}
+          </ul>
         </section>
       </main>
       <Footer />
