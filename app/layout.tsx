@@ -144,10 +144,10 @@ const localBusinessSchema = {
   },
   aggregateRating: {
     '@type': 'AggregateRating',
-    ratingValue: '5.0',
-    reviewCount: '1',
-    bestRating: '5',
-    worstRating: '1',
+    ratingValue: 5.0,
+    reviewCount: 1,
+    bestRating: 5,
+    worstRating: 1,
   },
   sameAs: [
     `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '97400000000'}`,
