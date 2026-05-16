@@ -382,7 +382,7 @@ export default function Hero({ lang = 'en' }: HeroProps) {
 
       {/* Scroll hint */}
       <div
-        className="animate-fade-in-up animation-delay-600"
+        className="animate-fade-in-up animation-delay-500"
         aria-hidden="true"
         style={{
           position: 'absolute',
