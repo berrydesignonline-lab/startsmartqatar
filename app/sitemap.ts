@@ -13,12 +13,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Dataset not yet created — skip blog URLs
   }
 
-  const blogUrls: MetadataRoute.Sitemap = posts.map((post) => ({
-    url: `${SITE_URL}/blog/${post.slug.current}`,
-    lastModified: post.publishedAt ? new Date(post.publishedAt) : new Date(),
-    changeFrequency: 'monthly',
-    priority: 0.7,
-  }));
+  const blogUrls: MetadataRoute.Sitemap = posts.flatMap((post) => [
+    {
+      url: `${SITE_URL}/blog/${post.slug.current}`,
+      lastModified: post.publishedAt ? new Date(post.publishedAt) : new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/ar/blog/${post.slug.current}`,
+      lastModified: post.publishedAt ? new Date(post.publishedAt) : new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+  ]);
 
   return [
     {
@@ -35,6 +43,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: `${SITE_URL}/blog`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/ar/blog`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
