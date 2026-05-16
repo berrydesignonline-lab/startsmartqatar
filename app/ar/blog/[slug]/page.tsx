@@ -41,7 +41,7 @@ export async function generateMetadata(
         images: [{ url: urlFor(post.mainImage).width(1200).height(630).url() }],
       }),
     },
-    alternates: { canonical: `https://startsmartqatar.com/ar/blog/${slug}` },
+    alternates: { canonical: `https://startsmartqa.com/ar/blog/${slug}` },
   };
 }
 
@@ -82,10 +82,10 @@ export default async function ArBlogPostPage(
     publisher: {
       '@type': 'Organization',
       name: 'Start Smart Qatar',
-      url: 'https://startsmartqatar.com',
+      url: 'https://startsmartqa.com',
     },
     ...(imageUrl && { image: imageUrl }),
-    mainEntityOfPage: { '@type': 'WebPage', '@id': `https://startsmartqatar.com/ar/blog/${slug}` },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `https://startsmartqa.com/ar/blog/${slug}` },
   };
 
   const relatedPosts = related.filter((p) => p._id !== post._id).slice(0, 3);
@@ -129,7 +129,7 @@ export default async function ArBlogPostPage(
           {/* Meta row */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '1.25rem' }}>
             {categoryTitle && (
-              <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontWeight: 600, fontSize: '0.6875rem', letterSpacing: '0.06em', textTransform: 'uppercase', color: '#111111', backgroundColor: '#FFD600', borderRadius: '9999px', padding: '0.2rem 0.75rem' }}>
+              <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontWeight: 600, fontSize: '0.6875rem', letterSpacing: '0.06em', textTransform: 'uppercase', color: '#111111', backgroundColor: 'var(--c-accent)', borderRadius: '9999px', padding: '0.2rem 0.75rem' }}>
                 {categoryTitle}
               </span>
             )}
@@ -182,7 +182,7 @@ export default async function ArBlogPostPage(
           {/* WhatsApp CTA */}
           <div style={{ backgroundColor: '#111111', borderRadius: '0.75rem', padding: '2rem', marginTop: '3rem', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
             <p style={{ fontFamily: 'var(--font-cairo), sans-serif', fontWeight: 700, fontSize: '1.25rem', color: '#FFFFFF', margin: 0 }}>
-              تحتاج مساعدة في البطارية؟ <span style={{ color: '#FFD600' }}>نأتي إليك.</span>
+              تحتاج مساعدة في البطارية؟ <span style={{ color: 'var(--c-accent)' }}>نأتي إليك.</span>
             </p>
             <a
               href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}?text=مرحباً%2C+أحتاج+خدمة+بطارية`}
@@ -222,10 +222,10 @@ export default async function ArBlogPostPage(
         .prose-ar ul, .prose-ar ol { padding-right: 1.5rem; padding-left: 0; margin: 0 0 1.25rem; }
         .prose-ar li { margin-bottom: 0.375rem; font-size: 1.0625rem; }
         .prose-ar strong { font-weight: 700; color: #111111; }
-        .prose-ar a { color: #111111; text-decoration: underline; text-decoration-color: #FFD600; }
-        .prose-ar blockquote { border-right: 4px solid #FFD600; border-left: none; margin: 1.5rem 0; padding: 0.75rem 1.25rem; background: #FAFAFA; color: #555555; font-style: normal; }
+        .prose-ar a { color: #111111; text-decoration: underline; text-decoration-color: var(--c-accent); }
+        .prose-ar blockquote { border-right: 4px solid var(--c-accent); border-left: none; margin: 1.5rem 0; padding: 0.75rem 1.25rem; background: #FAFAFA; color: #555555; font-style: normal; }
         .breadcrumb-link { color: #888888; text-decoration: none; transition: color 0.15s; }
-        .breadcrumb-link:hover { color: #FFD600; }
+        .breadcrumb-link:hover { color: var(--c-accent); }
       `}</style>
       <Footer lang="ar" />
       <FloatingCTA />

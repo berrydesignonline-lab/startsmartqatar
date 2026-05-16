@@ -62,7 +62,7 @@ export default async function BlogPage() {
           }}
         >
           Car Battery Tips &amp; Guides —{' '}
-          <span style={{ color: '#FFD600' }}>Qatar</span>
+          <span style={{ color: 'var(--c-accent)' }}>Qatar</span>
         </h1>
         <p
           style={{

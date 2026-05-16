@@ -40,8 +40,8 @@ export default function BlogCard({ post, lang = 'en' }: BlogCardProps) {
           transition: 'border-color 0.2s, box-shadow 0.2s',
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.borderColor = '#FFD600';
-          e.currentTarget.style.boxShadow = '0 8px 32px rgba(255,214,0,0.1)';
+          e.currentTarget.style.borderColor = 'var(--c-accent)';
+          e.currentTarget.style.boxShadow = '0 8px 32px rgba(var(--c-accent-rgb),0.1)';
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.borderColor = '#E5E5E5';
@@ -68,7 +68,7 @@ export default function BlogCard({ post, lang = 'en' }: BlogCardProps) {
         <div style={{ padding: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.625rem', flexGrow: 1 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
             {post.category && (
-              <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontWeight: 600, fontSize: '0.6875rem', letterSpacing: '0.06em', textTransform: 'uppercase', color: '#111111', backgroundColor: '#FFD600', borderRadius: '9999px', padding: '0.2rem 0.625rem' }}>
+              <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontWeight: 600, fontSize: '0.6875rem', letterSpacing: '0.06em', textTransform: 'uppercase', color: '#111111', backgroundColor: 'var(--c-accent)', borderRadius: '9999px', padding: '0.2rem 0.625rem' }}>
                 {post.category}
               </span>
             )}
@@ -89,7 +89,7 @@ export default function BlogCard({ post, lang = 'en' }: BlogCardProps) {
             </p>
           )}
 
-          <span style={{ fontFamily: ar ? 'var(--font-cairo), sans-serif' : 'var(--font-inter), sans-serif', fontWeight: 600, fontSize: '0.875rem', color: '#111111', borderBottom: '2px solid #FFD600', paddingBottom: '1px', width: 'fit-content', marginTop: '0.25rem' }}>
+          <span style={{ fontFamily: ar ? 'var(--font-cairo), sans-serif' : 'var(--font-inter), sans-serif', fontWeight: 600, fontSize: '0.875rem', color: '#111111', borderBottom: '2px solid var(--c-accent)', paddingBottom: '1px', width: 'fit-content', marginTop: '0.25rem' }}>
             {ar ? '← اقرأ المزيد' : 'Read more →'}
           </span>
         </div>

@@ -80,9 +80,9 @@ export default function HowItWorks({ lang = 'en' }: HowItWorksProps) {
             }}
           >
             {ar ? (
-              <>٣ خطوات. <span style={{ color: '#FFD600' }}>بدون تعقيد.</span></>
+              <>٣ خطوات. <span style={{ color: 'var(--c-accent)' }}>بدون تعقيد.</span></>
             ) : (
-              <>3 Steps. <span style={{ color: '#FFD600' }}>No Hassle.</span></>
+              <>3 Steps. <span style={{ color: 'var(--c-accent)' }}>No Hassle.</span></>
             )}
           </h2>
         </div>
@@ -98,7 +98,7 @@ export default function HowItWorks({ lang = 'en' }: HowItWorksProps) {
               left: 'calc(16.67% + 12px)',
               right: 'calc(16.67% + 12px)',
               height: '2px',
-              backgroundImage: 'repeating-linear-gradient(to right, #FFD600 0, #FFD600 10px, transparent 10px, transparent 20px)',
+              backgroundImage: 'repeating-linear-gradient(to right, var(--c-accent) 0, var(--c-accent) 10px, transparent 10px, transparent 20px)',
               display: 'none', // shown via media query below
             }}
             className="connector-line"
@@ -184,7 +184,7 @@ function StepCard({ step, ar, isLast }: { step: Step; ar: boolean; isLast: boole
           width: '56px',
           height: '56px',
           borderRadius: '50%',
-          border: '2px solid #FFD600',
+          border: '2px solid var(--c-accent)',
           backgroundColor: '#1A1A1A',
           display: 'flex',
           alignItems: 'center',
@@ -199,7 +199,7 @@ function StepCard({ step, ar, isLast }: { step: Step; ar: boolean; isLast: boole
             fontFamily: 'var(--font-inter), sans-serif',
             fontWeight: 800,
             fontSize: '1.125rem',
-            color: '#FFD600',
+            color: 'var(--c-accent)',
             lineHeight: 1,
           }}
         >
@@ -214,7 +214,7 @@ function StepCard({ step, ar, isLast }: { step: Step; ar: boolean; isLast: boole
           style={{
             width: '2px',
             height: '32px',
-            backgroundImage: 'repeating-linear-gradient(to bottom, #FFD600 0, #FFD600 6px, transparent 6px, transparent 12px)',
+            backgroundImage: 'repeating-linear-gradient(to bottom, var(--c-accent) 0, var(--c-accent) 6px, transparent 6px, transparent 12px)',
           }}
           className="mobile-connector"
         />

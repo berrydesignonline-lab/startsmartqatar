@@ -15,7 +15,7 @@ export default function StatsBar() {
       role="region"
       aria-label="Service stats"
       style={{
-        backgroundColor: '#FFD600',
+        backgroundColor: 'var(--c-accent)',
         height: '80px',
         display: 'grid',
         gridTemplateColumns: '1fr 1fr 1fr',
@@ -37,7 +37,7 @@ export default function StatsBar() {
             style={{
               fontFamily: 'var(--font-inter), sans-serif',
               fontWeight: 800,
-              fontSize: '1.75rem',
+              fontSize: 'clamp(1.25rem, 4vw, 1.75rem)',
               lineHeight: 1,
               color: '#111111',
             }}
@@ -48,11 +48,11 @@ export default function StatsBar() {
             style={{
               fontFamily: 'var(--font-cairo), var(--font-inter), sans-serif',
               fontWeight: 400,
-              fontSize: '0.75rem',
+              fontSize: 'clamp(0.625rem, 1.8vw, 0.75rem)',
               lineHeight: 1.3,
               color: '#111111',
               textAlign: 'center',
-              padding: '0 0.5rem',
+              padding: '0 0.25rem',
             }}
           >
             {stat.label}

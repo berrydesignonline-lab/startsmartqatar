@@ -45,7 +45,7 @@ export default function Areas({ lang = 'en' }: AreasProps) {
       aria-labelledby="areas-heading"
       dir={ar ? 'rtl' : 'ltr'}
       style={{
-        backgroundColor: '#FFFFFF',
+        backgroundColor: 'var(--c-bg)',
         padding: '80px 24px',
       }}
     >
@@ -60,7 +60,7 @@ export default function Areas({ lang = 'en' }: AreasProps) {
               fontSize: '0.75rem',
               letterSpacing: '0.12em',
               textTransform: 'uppercase',
-              color: '#888888',
+              color: 'var(--c-muted)',
               marginBottom: '0.75rem',
             }}
           >
@@ -73,15 +73,15 @@ export default function Areas({ lang = 'en' }: AreasProps) {
               fontFamily: ar ? 'var(--font-cairo), sans-serif' : 'var(--font-inter), sans-serif',
               fontWeight: 800,
               fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
-              color: '#111111',
+              color: 'var(--c-text)',
               margin: '0 0 0.75rem',
               lineHeight: 1.2,
             }}
           >
             {ar ? (
-              <>نغطي <span style={{ color: '#FFD600' }}>كل قطر</span></>
+              <>نغطي <span style={{ color: 'var(--c-accent)' }}>كل قطر</span></>
             ) : (
-              <>We Cover <span style={{ color: '#FFD600' }}>All of Qatar</span></>
+              <>We Cover <span style={{ color: 'var(--c-accent)' }}>All of Qatar</span></>
             )}
           </h2>
 
@@ -90,7 +90,7 @@ export default function Areas({ lang = 'en' }: AreasProps) {
               fontFamily: ar ? 'var(--font-cairo), sans-serif' : 'var(--font-inter), sans-serif',
               fontWeight: 400,
               fontSize: '1rem',
-              color: '#888888',
+              color: 'var(--c-muted)',
               margin: 0,
               lineHeight: 1.65,
             }}
@@ -162,7 +162,7 @@ export default function Areas({ lang = 'en' }: AreasProps) {
               }}
             >
               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#FFD600"/>
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="var(--c-accent)"/>
               </svg>
               <span>Map embed — set NEXT_PUBLIC_GOOGLE_MAPS_EMBED in .env.local</span>
             </div>
@@ -171,7 +171,7 @@ export default function Areas({ lang = 'en' }: AreasProps) {
             style={{
               fontFamily: 'var(--font-inter), sans-serif',
               fontSize: '0.8125rem',
-              color: '#888888',
+              color: 'var(--c-muted)',
               textAlign: 'center',
               marginTop: '0.75rem',
             }}
@@ -202,28 +202,28 @@ function AreaChip({ label, isLast }: { label: string; isLast: boolean }) {
     <div
       role="listitem"
       style={{
-        border: '1px solid #E5E5E5',
+        border: '1px solid var(--c-border)',
         borderRadius: '9999px',
         padding: '0.5rem 1rem',
         textAlign: 'center',
         fontFamily: 'var(--font-inter), sans-serif',
         fontWeight: 500,
         fontSize: '0.875rem',
-        color: '#111111',
+        color: 'var(--c-text)',
         cursor: 'default',
-        transition: 'background-color 0.15s, border-color 0.15s',
-        backgroundColor: isLast ? 'rgba(255,214,0,0.08)' : '#FFFFFF',
-        borderColor: isLast ? '#FFD600' : '#E5E5E5',
+        transition: 'background-color 0.15s, border-color 0.15s, color 0.15s',
+        backgroundColor: isLast ? 'rgba(var(--c-accent-rgb),0.08)' : 'var(--c-surface)',
+        borderColor: isLast ? 'var(--c-accent)' : 'var(--c-border)',
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.backgroundColor = '#FFD600';
-        e.currentTarget.style.borderColor = '#FFD600';
+        e.currentTarget.style.backgroundColor = 'var(--c-accent)';
+        e.currentTarget.style.borderColor = 'var(--c-accent)';
         e.currentTarget.style.color = '#111111';
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.backgroundColor = isLast ? 'rgba(255,214,0,0.08)' : '#FFFFFF';
-        e.currentTarget.style.borderColor = isLast ? '#FFD600' : '#E5E5E5';
-        e.currentTarget.style.color = '#111111';
+        e.currentTarget.style.backgroundColor = isLast ? 'rgba(var(--c-accent-rgb),0.08)' : 'var(--c-surface)';
+        e.currentTarget.style.borderColor = isLast ? 'var(--c-accent)' : 'var(--c-border)';
+        e.currentTarget.style.color = 'var(--c-text)';
       }}
     >
       {label}

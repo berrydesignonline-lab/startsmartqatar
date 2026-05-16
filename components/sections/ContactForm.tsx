@@ -98,7 +98,7 @@ export default function ContactForm({ lang = 'en' }: ContactFormProps) {
         id="contact"
         aria-labelledby="contact-heading"
         dir={ar ? 'rtl' : 'ltr'}
-        style={{ backgroundColor: '#F9F9F9', padding: '80px 24px' }}
+        style={{ backgroundColor: 'var(--c-bg)', padding: '80px 24px' }}
       >
         <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '4rem' }}>
 
@@ -107,9 +107,9 @@ export default function ContactForm({ lang = 'en' }: ContactFormProps) {
             <p style={labelStyle}>CONTACT US | تواصل معنا</p>
             <h2 id="contact-heading" style={h2Style}>
               {ar ? (
-                <>اطلب الخدمة — <span style={{ color: '#FFD600' }}>بدون اتصال</span></>
+                <>اطلب الخدمة — <span style={{ color: 'var(--c-accent)' }}>بدون اتصال</span></>
               ) : (
-                <>Request Service — <span style={{ color: '#FFD600' }}>No Call Needed</span></>
+                <>Request Service — <span style={{ color: 'var(--c-accent)' }}>No Call Needed</span></>
               )}
             </h2>
             <p style={subtitleStyle}>
@@ -222,7 +222,7 @@ export default function ContactForm({ lang = 'en' }: ContactFormProps) {
                     type="submit"
                     disabled={status === 'loading'}
                     style={{
-                      backgroundColor: status === 'loading' ? '#e6c200' : '#FFD600',
+                      backgroundColor: status === 'loading' ? 'var(--c-accent-hover)' : 'var(--c-accent)',
                       color: '#111111',
                       fontFamily: 'var(--font-inter), sans-serif',
                       fontWeight: 700,
@@ -252,7 +252,7 @@ export default function ContactForm({ lang = 'en' }: ContactFormProps) {
                   fontFamily: 'var(--font-inter), sans-serif',
                   fontWeight: 700,
                   fontSize: '1.125rem',
-                  color: '#111111',
+                  color: 'var(--c-text)',
                   margin: '0 0 0.25rem',
                 }}
               >
@@ -301,7 +301,7 @@ function Field({
         required={required}
         autoComplete={type === 'tel' ? 'tel' : 'off'}
         style={inputStyle}
-        onFocus={(e) => { e.currentTarget.style.borderColor = '#FFD600'; e.currentTarget.style.outline = 'none'; }}
+        onFocus={(e) => { e.currentTarget.style.borderColor = 'var(--c-accent)'; e.currentTarget.style.outline = 'none'; }}
         onBlur={(e) => { e.currentTarget.style.borderColor = '#E5E5E5'; }}
       />
     </div>
@@ -312,16 +312,16 @@ function FaqItem({ q, a }: { q: string; a: string }) {
   return (
     <div
       style={{
-        backgroundColor: '#FFFFFF',
-        border: '1px solid #E5E5E5',
+        backgroundColor: 'var(--c-surface)',
+        border: '1px solid var(--c-border)',
         borderRadius: '0.625rem',
         padding: '1rem 1.25rem',
       }}
     >
-      <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontWeight: 600, fontSize: '0.9375rem', color: '#111111', margin: '0 0 0.375rem' }}>
-        <span style={{ color: '#FFD600', marginRight: '0.375rem' }}>Q.</span>{q}
+      <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontWeight: 600, fontSize: '0.9375rem', color: 'var(--c-text)', margin: '0 0 0.375rem' }}>
+        <span style={{ color: 'var(--c-accent)', marginRight: '0.375rem' }}>Q.</span>{q}
       </p>
-      <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontWeight: 400, fontSize: '0.9rem', color: '#555555', margin: 0, lineHeight: 1.55 }}>
+      <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontWeight: 400, fontSize: '0.9rem', color: 'var(--c-muted)', margin: 0, lineHeight: 1.55 }}>
         {a}
       </p>
     </div>
@@ -363,7 +363,7 @@ const labelStyle: React.CSSProperties = {
   fontSize: '0.75rem',
   letterSpacing: '0.12em',
   textTransform: 'uppercase',
-  color: '#888888',
+  color: 'var(--c-muted)',
   marginBottom: '0.75rem',
 };
 
@@ -371,7 +371,7 @@ const h2Style: React.CSSProperties = {
   fontFamily: 'var(--font-inter), sans-serif',
   fontWeight: 800,
   fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
-  color: '#111111',
+  color: 'var(--c-text)',
   margin: '0 0 0.75rem',
   lineHeight: 1.2,
 };
@@ -380,20 +380,20 @@ const subtitleStyle: React.CSSProperties = {
   fontFamily: 'var(--font-inter), sans-serif',
   fontWeight: 400,
   fontSize: '1rem',
-  color: '#888888',
+  color: 'var(--c-muted)',
   margin: 0,
 };
 
 const cardStyle: React.CSSProperties = {
-  backgroundColor: '#FFFFFF',
-  border: '1px solid #E5E5E5',
+  backgroundColor: 'var(--c-surface)',
+  border: '1px solid var(--c-border)',
   borderRadius: '0.75rem',
-  padding: '2rem',
+  padding: 'clamp(1rem, 4vw, 2rem)',
 };
 
 const rowStyle: React.CSSProperties = {
   display: 'flex',
-  gap: '1rem',
+  gap: '0.75rem',
   flexWrap: 'wrap',
 };
 
@@ -401,15 +401,15 @@ const fieldLabelStyle: React.CSSProperties = {
   fontFamily: 'var(--font-inter), sans-serif',
   fontWeight: 600,
   fontSize: '0.8125rem',
-  color: '#333333',
+  color: 'var(--c-text)',
 };
 
 const inputStyle: React.CSSProperties = {
   fontFamily: 'var(--font-inter), sans-serif',
   fontSize: '0.9375rem',
-  color: '#111111',
-  backgroundColor: '#FFFFFF',
-  border: '1px solid #E5E5E5',
+  color: 'var(--c-text)',
+  backgroundColor: 'var(--c-bg)',
+  border: '1px solid var(--c-border)',
   borderRadius: '0.5rem',
   padding: '0.6875rem 0.875rem',
   width: '100%',

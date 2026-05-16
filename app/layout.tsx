@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter, Cairo } from 'next/font/google';
-import Script from 'next/script';
 import { ThemeProvider } from '@/lib/theme';
 import './globals.css';
 
@@ -49,7 +48,7 @@ export const metadata: Metadata = {
     description: 'Car battery dead? We come to you in 30 min. 24/7 across Qatar.',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/opengraph-image',
         width: 1200,
         height: 630,
         alt: 'StartSmart Battery Service Qatar',
@@ -77,7 +76,10 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: 'var(--c-accent)',
+  themeColor: [
+    { media: '(prefers-color-scheme: dark)', color: '#FFD600' },
+    { media: '(prefers-color-scheme: light)', color: '#E63030' },
+  ],
 };
 
 const localBusinessSchema = {
@@ -145,17 +147,11 @@ const localBusinessSchema = {
       },
     ],
   },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: 5.0,
-    reviewCount: 1,
-    bestRating: 5,
-    worstRating: 1,
-  },
   sameAs: [
     `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '97400000000'}`,
-    'https://www.facebook.com/startsmartqa',
-    'https://g.co/kgs/startsmartqa',
+    // Add real Facebook and Google Business URLs once profiles are live:
+    // 'https://www.facebook.com/startsmartqa',
+    // 'https://g.co/kgs/YOUR_REAL_ID',
   ],
 };
 
@@ -171,17 +167,16 @@ export default function RootLayout({
             __html: `(function(){var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();`,
           }}
         />
+        {/* LocalBusiness structured data — in <head> for immediate crawlability */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
       </head>
       <body>
         <ThemeProvider>
           {children}
         </ThemeProvider>
-        <Script
-          id="local-business-schema"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
-          strategy="afterInteractive"
-        />
       </body>
     </html>
   );

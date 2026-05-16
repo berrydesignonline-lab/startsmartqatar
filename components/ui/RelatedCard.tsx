@@ -30,7 +30,7 @@ export default function RelatedCard({ post, lang = 'en' }: RelatedCardProps) {
           overflow: 'hidden',
           transition: 'border-color 0.2s',
         }}
-        onMouseEnter={(e) => (e.currentTarget.style.borderColor = '#FFD600')}
+        onMouseEnter={(e) => (e.currentTarget.style.borderColor = 'var(--c-accent)')}
         onMouseLeave={(e) => (e.currentTarget.style.borderColor = '#E5E5E5')}
       >
         <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', backgroundColor: '#1A1A1A' }}>

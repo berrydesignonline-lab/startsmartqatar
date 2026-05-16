@@ -4,7 +4,7 @@
 @theme inline {
   /* Colors */
   --color-primary:   #111111;
-  --color-accent:    #FFD600;
+  --color-accent:    var(--c-accent);
   --color-surface:   #1A1A1A;
   --color-muted:     #888888;
   --color-white:     #FFFFFF;
@@ -15,11 +15,35 @@
   --font-arabic:  var(--font-cairo);
 }
 
+/* ── Theme Variables ────────────────────────────────────── */
+:root,
+[data-theme="dark"] {
+  --c-bg:          #111111;
+  --c-surface:     #1A1A1A;
+  --c-text:        #FFFFFF;
+  --c-muted:       #888888;
+  --c-border:      #2a2a2a;
+  --c-accent:      #FFD600;
+  --c-accent-hover:#e6c000;
+  --c-accent-rgb:  255, 214, 0;
+}
+
+[data-theme="light"] {
+  --c-bg:          #F8F9FA;
+  --c-surface:     #FFFFFF;
+  --c-text:        #111111;
+  --c-muted:       #555555;
+  --c-border:      #E5E7EB;
+  --c-accent:      #E63030;
+  --c-accent-hover:#C41B1B;
+  --c-accent-rgb:  230, 48, 48;
+}
+
 /* ── Base ──────────────────────────────────────────────── */
 html {
   scroll-behavior: smooth;
-  background: #FFFFFF;
-  color: #111111;
+  background: var(--c-bg);
+  color: var(--c-text);
 }
 
 body {
@@ -43,17 +67,17 @@ html[lang="ar"] {
   background: #111111;
 }
 ::-webkit-scrollbar-thumb {
-  background: #FFD600;
+  background: var(--c-accent);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #e6c000;
+  background: var(--c-accent-hover);
 }
 
 /* Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #FFD600 #111111;
+  scrollbar-color: var(--c-accent) #111111;
 }
 
 /* ── Animations ────────────────────────────────────────── */

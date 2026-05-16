@@ -87,10 +87,10 @@ export default async function BlogPostPage(
     publisher: {
       '@type': 'Organization',
       name: 'Start Smart Qatar',
-      url: 'https://startsmartqatar.com',
+      url: 'https://startsmartqa.com',
     },
     ...(imageUrl && { image: imageUrl }),
-    mainEntityOfPage: { '@type': 'WebPage', '@id': `https://startsmartqatar.com/blog/${slug}` },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `https://startsmartqa.com/blog/${slug}` },
   };
 
   const relatedPosts = related.filter((p) => p._id !== post._id).slice(0, 3);
@@ -142,7 +142,7 @@ export default async function BlogPostPage(
                   letterSpacing: '0.06em',
                   textTransform: 'uppercase',
                   color: '#111111',
-                  backgroundColor: '#FFD600',
+                  backgroundColor: 'var(--c-accent)',
                   borderRadius: '9999px',
                   padding: '0.2rem 0.75rem',
                 }}
@@ -260,7 +260,7 @@ export default async function BlogPostPage(
                 margin: 0,
               }}
             >
-              Need Battery Help? <span style={{ color: '#FFD600' }}>We Come to You.</span>
+              Need Battery Help? <span style={{ color: 'var(--c-accent)' }}>We Come to You.</span>
             </p>
             <a
               href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}?text=Hi%2C+I+need+battery+service`}
@@ -332,13 +332,13 @@ export default async function BlogPostPage(
         .prose-content ul, .prose-content ol { padding-left: 1.5rem; margin: 0 0 1.25rem; }
         .prose-content li { margin-bottom: 0.375rem; font-size: 1.0625rem; }
         .prose-content strong { font-weight: 700; color: #111111; }
-        .prose-content a { color: #111111; text-decoration: underline; text-decoration-color: #FFD600; }
-        .prose-content blockquote { border-left: 4px solid #FFD600; margin: 1.5rem 0; padding: 0.75rem 1.25rem; background: #FAFAFA; color: #555555; font-style: italic; }
+        .prose-content a { color: #111111; text-decoration: underline; text-decoration-color: var(--c-accent); }
+        .prose-content blockquote { border-left: 4px solid var(--c-accent); margin: 1.5rem 0; padding: 0.75rem 1.25rem; background: #FAFAFA; color: #555555; font-style: italic; }
         [dir="rtl"] .prose-content ul, [dir="rtl"] .prose-content ol { padding-left: 0; padding-right: 1.5rem; }
-        [dir="rtl"] .prose-content blockquote { border-left: none; border-right: 4px solid #FFD600; }
+        [dir="rtl"] .prose-content blockquote { border-left: none; border-right: 4px solid var(--c-accent); }
         [dir="rtl"] .prose-content { font-family: var(--font-cairo), sans-serif; }
         .breadcrumb-link { color: #888888; text-decoration: none; transition: color 0.15s; }
-        .breadcrumb-link:hover { color: #FFD600; }
+        .breadcrumb-link:hover { color: var(--c-accent); }
       `}</style>
       <Footer />
       <FloatingCTA />
