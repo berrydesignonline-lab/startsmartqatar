@@ -39,6 +39,17 @@ export default function ServicePageTemplate({ data, lang }: Props) {
     provider: { '@type': 'LocalBusiness', name: 'StartSmart Qatar', url: SITE_URL },
     areaServed: { '@type': 'Country', name: 'Qatar' },
     url: pageUrl,
+    ...(t.warranty && {
+      hasWarrantyScope: {
+        '@type': 'WarrantyScope',
+        name: t.warranty.title,
+        durationOfWarranty: {
+          '@type': 'QuantitativeValue',
+          value: t.warranty.months,
+          unitCode: 'MON',
+        },
+      },
+    }),
   };
 
   const breadcrumbSchema = {
@@ -153,6 +164,48 @@ export default function ServicePageTemplate({ data, lang }: Props) {
             {t.ctaLabel}
           </a>
         </section>
+
+        {/* ── Warranty ── */}
+        {t.warranty && (
+          <section style={{ maxWidth: '860px', margin: '0 auto', padding: '0 1.5rem 2rem' }}>
+            <div style={{
+              border: '2px solid var(--c-accent)',
+              borderRadius: '1rem',
+              padding: 'clamp(1.25rem, 4vw, 2rem)',
+              backgroundColor: 'rgba(var(--c-accent-rgb), 0.04)',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '1rem',
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+                <span style={{ fontSize: '2rem', lineHeight: 1 }}>🛡️</span>
+                <div>
+                  <h2 style={{
+                    margin: 0, fontWeight: 800,
+                    fontSize: 'clamp(1.25rem, 3vw, 1.625rem)',
+                    color: 'var(--c-accent)', lineHeight: 1.15,
+                  }}>
+                    {t.warranty.title}
+                  </h2>
+                  <p style={{ margin: '0.25rem 0 0', color: 'var(--c-muted)', fontSize: '0.875rem' }}>
+                    {t.warranty.months} {ar ? 'شهراً من تاريخ التركيب' : 'months from installation date'}
+                  </p>
+                </div>
+              </div>
+              <p style={{ margin: 0, color: 'var(--c-text)', lineHeight: 1.7, fontSize: '0.9375rem' }}>
+                {t.warranty.description}
+              </p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                {t.warranty.conditions.map((c) => (
+                  <li key={c} style={{ display: 'flex', gap: '0.625rem', alignItems: 'flex-start', fontSize: '0.9375rem', color: 'var(--c-text)' }}>
+                    <span style={{ color: 'var(--c-accent)', fontWeight: 700, flexShrink: 0, marginTop: '0.1rem' }}>✓</span>
+                    <span>{c}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        )}
 
         {/* ── Benefits ── */}
         <section style={{ maxWidth: '860px', margin: '0 auto', padding: '2rem 1.5rem' }}>

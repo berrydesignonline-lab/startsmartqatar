@@ -97,8 +97,31 @@ export default function Hero({ lang = 'en' }: HeroProps) {
           <span>Qatar — 24/7 Service</span>
         </div>
 
-        {/* 2 — H1 */}
-        <div className="animate-fade-in-up animation-delay-200" style={{ position: 'relative', zIndex: 1 }}>
+        {/* 2 — Warranty badge */}
+        <div
+          className="animate-fade-in-up animation-delay-200"
+          style={{
+            position: 'relative',
+            zIndex: 1,
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.375rem',
+            border: '1px solid rgba(var(--c-accent-rgb),0.35)',
+            borderRadius: '9999px',
+            padding: '0.3rem 0.875rem',
+            fontSize: '0.8125rem',
+            fontWeight: 600,
+            color: 'var(--c-accent)',
+            backgroundColor: 'rgba(var(--c-accent-rgb),0.06)',
+            letterSpacing: '0.02em',
+          }}
+        >
+          <span>🛡️</span>
+          <span>{ar ? 'ضمان البطارية 12 شهراً' : '12-Month Battery Warranty'}</span>
+        </div>
+
+        {/* 3 — H1 */}
+        <div className="animate-fade-in-up animation-delay-300" style={{ position: 'relative', zIndex: 1 }}>
           <h1
             style={{
               fontFamily: 'var(--font-inter), sans-serif',
@@ -136,9 +159,9 @@ export default function Hero({ lang = 'en' }: HeroProps) {
           </p>
         </div>
 
-        {/* 3 — Subtitle */}
+        {/* 4 — Subtitle */}
         <p
-          className="animate-fade-in-up animation-delay-300"
+          className="animate-fade-in-up animation-delay-400"
           style={{
             position: 'relative',
             zIndex: 1,
@@ -155,9 +178,9 @@ export default function Hero({ lang = 'en' }: HeroProps) {
           بطاريتك وقفت؟ نجي عندك في 30 دقيقة
         </p>
 
-        {/* 4 — Body text EN */}
+        {/* 5 — Body text EN */}
         <p
-          className="animate-fade-in-up animation-delay-300"
+          className="animate-fade-in-up animation-delay-400"
           style={{
             position: 'relative',
             zIndex: 1,
@@ -174,9 +197,9 @@ export default function Hero({ lang = 'en' }: HeroProps) {
           30 minutes or less. Pay after service.
         </p>
 
-        {/* 5 — CTA Buttons */}
+        {/* 6 — CTA Buttons */}
         <div
-          className="animate-fade-in-up animation-delay-400 hero-cta-group"
+          className="animate-fade-in-up animation-delay-500 hero-cta-group"
           style={{
             position: 'relative',
             zIndex: 1,
@@ -261,9 +284,9 @@ export default function Hero({ lang = 'en' }: HeroProps) {
           </a>
         </div>
 
-        {/* 6 — Trust badges */}
+        {/* 7 — Trust badges */}
         <div
-          className="animate-fade-in-up animation-delay-500"
+          className="animate-fade-in-up animation-delay-600"
           style={{
             position: 'relative',
             zIndex: 1,
