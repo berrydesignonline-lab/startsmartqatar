@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 
 const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '97400000000';
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=Hi%2C+I+need+battery+service`;
@@ -41,20 +42,14 @@ export default function Footer({ lang = 'en' }: FooterProps) {
         {/* Col 1 — Brand */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           {/* Logo */}
-          <Link href="/" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', width: 'fit-content' }}>
-            <BatteryLogo />
-            <span
-              style={{
-                fontFamily: 'var(--font-inter), sans-serif',
-                fontWeight: 800,
-                fontSize: '1.25rem',
-                letterSpacing: '-0.02em',
-                lineHeight: 1,
-              }}
-            >
-              <span style={{ color: '#FFFFFF' }}>Start</span>
-              <span style={{ color: 'var(--c-accent)' }}>Smart</span>
-            </span>
+          <Link href="/" style={{ textDecoration: 'none', display: 'inline-flex', width: 'fit-content' }}>
+            <Image
+              src="/images/logodark.webp"
+              alt="StartSmart Logo"
+              width={150}
+              height={47}
+              style={{ objectFit: 'contain' }}
+            />
           </Link>
 
           {/* Tagline */}
@@ -252,15 +247,6 @@ export default function Footer({ lang = 'en' }: FooterProps) {
 
 /* ── Icons ─────────────────────────────────────────────── */
 
-function BatteryLogo() {
-  return (
-    <svg width="32" height="20" viewBox="0 0 36 22" fill="none" aria-hidden="true">
-      <rect x="0.75" y="0.75" width="30.5" height="20.5" rx="3.25" fill="#111111" stroke="var(--c-accent)" strokeWidth="1.5" />
-      <rect x="31.5" y="7.5" width="4" height="7" rx="1.5" fill="var(--c-accent)" />
-      <path d="M19.5 3.5L12 12h5.5L14 18.5 22 10h-5.5L19.5 3.5Z" fill="var(--c-accent)" />
-    </svg>
-  );
-}
 
 function WhatsAppIcon() {
   return (
