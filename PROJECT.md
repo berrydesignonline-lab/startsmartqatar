@@ -53,7 +53,7 @@ File: `.env.local` (not committed)
 | `GOOGLE_PLACE_ID` | Google Place ID for the business | ⚠️ needs GBP first |
 | `NEXT_PUBLIC_GOOGLE_REVIEW_URL` | Short link to leave a Google review | ⚠️ needs GBP first |
 | `NEXT_PUBLIC_GSC_VERIFICATION` | Google Search Console HTML tag code | ⚠️ needs GSC setup |
-| `NEXT_PUBLIC_SITE_URL` | Full site URL (used by Testimonials for SSR fetch) | set to `https://startsmartqa.com` in prod, `http://localhost:3001` in dev |
+| `NEXT_PUBLIC_SITE_URL` | Full site URL (used by Testimonials for SSR fetch) | set to `https://startsmartqatar.com` in prod, `http://localhost:3001` in dev |
 
 > **Phone number change:** Update `NEXT_PUBLIC_WHATSAPP_NUMBER` — it auto-fills everywhere (Navbar, Hero, Footer, WhatsAppCTA, Services, ContactForm, schema markup in layout).
 
@@ -78,13 +78,13 @@ These are the outstanding items that require Ali's action — not code tasks.
 
 ### 2. Set up Google Search Console (GSC)
 - Go to https://search.google.com/search-console
-- Add property: `startsmartqa.com`
+- Add property: `startsmartqatar.com`
 - Choose **HTML tag** verification method → copy the code (looks like: `AbCdEf1234567890`)
 - Add to `.env.local` AND Vercel:
   ```
   NEXT_PUBLIC_GSC_VERIFICATION=AbCdEf1234567890
   ```
-- After verifying → Sitemaps → submit: `https://startsmartqa.com/sitemap.xml`
+- After verifying → Sitemaps → submit: `https://startsmartqatar.com/sitemap.xml`
 
 ### 3. Add real phone number
 - Add to `.env.local`: `NEXT_PUBLIC_WHATSAPP_NUMBER=974XXXXXXXX` (no `+`, no spaces)
@@ -115,7 +115,7 @@ Use consistent NAP:
 ```
 Name: StartSmart Battery & Electrical Qatar
 Phone: +974 XXXX XXXX
-Website: https://startsmartqa.com
+Website: https://startsmartqatar.com
 Category: Auto Repair, Battery Service, Roadside Assistance
 ```
 
@@ -228,7 +228,7 @@ sanity/schemas/
 → `components/sections/ContactForm.tsx` — `FAQ_ITEMS` array
 
 ### Change site URL (production)
-→ `app/layout.tsx` line ~21: `const SITE_URL = 'https://startsmartqa.com'`
+→ `app/layout.tsx` line ~21: `const SITE_URL = 'https://startsmartqatar.com'`
 
 ### Update service page content
 → `app/services/<service>/page.tsx` for EN
