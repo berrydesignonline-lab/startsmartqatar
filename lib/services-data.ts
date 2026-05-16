@@ -1,3 +1,11 @@
+export interface WarrantyData {
+  title: string;
+  months: number;
+  description: string;
+  conditions: string[];
+  badge: string;
+}
+
 export interface ServiceTranslation {
   metaTitle: string;
   metaDescription: string;
@@ -17,6 +25,7 @@ export interface ServiceTranslation {
   faqHeading: string;
   faq: { q: string; a: string }[];
   relatedHeading: string;
+  warranty?: WarrantyData;
 }
 
 export interface ServiceData {
@@ -57,6 +66,19 @@ export const batteryReplacementData: ServiceData = {
       { q: 'How much does battery replacement cost?', a: 'Price depends on your car model and battery type. We give you the exact price before starting. Pay only after the job is done.' },
     ],
     relatedHeading: 'Other Services',
+    warranty: {
+      title: '12-Month Battery Warranty',
+      months: 12,
+      badge: '🛡️ 12-Month Warranty Included',
+      description: 'Every battery we install comes with a 12-month replacement warranty. If your battery fails due to a manufacturing defect within 12 months, we replace it free — parts and labour included. No questions asked.',
+      conditions: [
+        'Covers manufacturing defects and premature failure',
+        'Free replacement — parts and labour included',
+        'We come to your location for the replacement',
+        'Valid for 12 months from installation date',
+        'Does not cover physical damage or misuse',
+      ],
+    },
   },
   ar: {
     metaTitle: 'تبديل بطارية السيارة قطر — نصل إليك في 30 دقيقة',
@@ -88,6 +110,19 @@ export const batteryReplacementData: ServiceData = {
       { q: 'كم تبلغ تكلفة تبديل البطارية؟', a: 'السعر يعتمد على نوع سيارتك والبطارية المناسبة. نخبرك بالسعر قبل البدء. تدفع بعد انتهاء العمل فقط.' },
     ],
     relatedHeading: 'خدمات أخرى',
+    warranty: {
+      title: 'ضمان البطارية 12 شهراً',
+      months: 12,
+      badge: '🛡️ ضمان 12 شهراً مشمول',
+      description: 'كل بطارية نركبها تأتي مع ضمان استبدال لمدة 12 شهراً. إذا توقفت بطاريتك بسبب عيب في الصنع خلال 12 شهراً، نستبدلها مجاناً — يشمل القطع والعمالة. بدون أي تعقيدات.',
+      conditions: [
+        'يغطي عيوب الصنع والأعطال المبكرة',
+        'استبدال مجاني — يشمل القطع والعمالة',
+        'نجي عندك في موقعك للاستبدال',
+        'صالح لمدة 12 شهراً من تاريخ التركيب',
+        'لا يغطي الأضرار الجسدية أو سوء الاستخدام',
+      ],
+    },
   },
 };
 
