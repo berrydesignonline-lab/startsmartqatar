@@ -18,7 +18,7 @@ interface ReviewsResponse {
 
 async function fetchReviews(): Promise<ReviewsResponse> {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://startsmartqa.com';
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://startsmartqatar.com';
     const res = await fetch(`${baseUrl}/api/reviews`, { next: { revalidate: 3600 } });
     if (!res.ok) return { reviews: [], totalRating: 0, totalReviews: 0 };
     return res.json();

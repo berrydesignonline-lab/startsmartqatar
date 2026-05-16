@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import ServicePageTemplate from '@/components/templates/ServicePageTemplate';
 import { jumpStartData } from '@/lib/services-data';
 
-const SITE_URL = 'https://startsmartqa.com';
+const SITE_URL = 'https://startsmartqatar.com';
 
 export const metadata: Metadata = {
   title: jumpStartData.en.metaTitle,

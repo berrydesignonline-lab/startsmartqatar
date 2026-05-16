@@ -7,7 +7,7 @@
 ## What This Project Is
 
 **StartSmart Qatar** — an on-demand car battery delivery and electrical repair service in Qatar.
-- Website: `https://startsmartqa.com`
+- Website: `https://startsmartqatar.com`
 - Bilingual: English + Arabic (RTL)
 - Built by: Berry Design (`berrydesign.online`)
 

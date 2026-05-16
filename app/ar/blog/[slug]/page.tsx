@@ -41,7 +41,7 @@ export async function generateMetadata(
         images: [{ url: urlFor(post.mainImage).width(1200).height(630).url() }],
       }),
     },
-    alternates: { canonical: `https://startsmartqa.com/ar/blog/${slug}` },
+    alternates: { canonical: `https://startsmartqatar.com/ar/blog/${slug}` },
   };
 }
 
@@ -82,10 +82,10 @@ export default async function ArBlogPostPage(
     publisher: {
       '@type': 'Organization',
       name: 'Start Smart Qatar',
-      url: 'https://startsmartqa.com',
+      url: 'https://startsmartqatar.com',
     },
     ...(imageUrl && { image: imageUrl }),
-    mainEntityOfPage: { '@type': 'WebPage', '@id': `https://startsmartqa.com/ar/blog/${slug}` },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `https://startsmartqatar.com/ar/blog/${slug}` },
   };
 
   const relatedPosts = related.filter((p) => p._id !== post._id).slice(0, 3);

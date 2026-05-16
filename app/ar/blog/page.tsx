@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: 'نصائح البطارية والسيارة — مدونة ستارت سمارت قطر',
     description: 'نصائح الخبراء حول بطاريات السيارات والمشاكل الكهربائية وصيانة المركبات في قطر.',
   },
-  alternates: { canonical: 'https://startsmartqa.com/ar/blog' },
+  alternates: { canonical: 'https://startsmartqatar.com/ar/blog' },
 };
 
 export const revalidate = 60;

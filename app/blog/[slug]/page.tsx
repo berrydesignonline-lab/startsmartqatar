@@ -87,10 +87,10 @@ export default async function BlogPostPage(
     publisher: {
       '@type': 'Organization',
       name: 'Start Smart Qatar',
-      url: 'https://startsmartqa.com',
+      url: 'https://startsmartqatar.com',
     },
     ...(imageUrl && { image: imageUrl }),
-    mainEntityOfPage: { '@type': 'WebPage', '@id': `https://startsmartqa.com/blog/${slug}` },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `https://startsmartqatar.com/blog/${slug}` },
   };
 
   const relatedPosts = related.filter((p) => p._id !== post._id).slice(0, 3);

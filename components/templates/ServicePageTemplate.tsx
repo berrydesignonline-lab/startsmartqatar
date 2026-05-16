@@ -3,7 +3,7 @@ import Footer from '@/components/ui/Footer';
 import FloatingCTA from '@/components/ui/FloatingCTA';
 import { type ServiceData, ALL_SERVICES } from '@/lib/services-data';
 
-const SITE_URL = 'https://startsmartqa.com';
+const SITE_URL = 'https://startsmartqatar.com';
 
 const AREAS_EN = [
   'West Bay', 'The Pearl', 'Lusail', 'Al Rayyan',

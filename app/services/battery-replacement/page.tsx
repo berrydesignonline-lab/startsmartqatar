@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import ServicePageTemplate from '@/components/templates/ServicePageTemplate';
 import { batteryReplacementData } from '@/lib/services-data';
 
-const SITE_URL = 'https://startsmartqa.com';
+const SITE_URL = 'https://startsmartqatar.com';
 
 export const metadata: Metadata = {
   title: batteryReplacementData.en.metaTitle,

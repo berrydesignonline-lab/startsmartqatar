@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { client } from '@/lib/sanity';
 
-const SITE_URL = 'https://startsmartqa.com';
+const SITE_URL = 'https://startsmartqatar.com';
 
 export const revalidate = 3600;
 
