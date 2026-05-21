@@ -3,11 +3,10 @@
 import Image from 'next/image';
 
 const WHATSAPP_URL = `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}?text=Hi%2C+I+need+battery+service`;
-
 const STOCK_IMAGE = '/images/hero-car.webp';
 
 const TRUST_BADGES = [
-  { icon: '⏱', en: '30 Min', ar: '30 دقيقة' },
+  { icon: '⏱', en: '10 Min', ar: '10 دقائق' },
   { icon: '🌍', en: 'All Qatar', ar: 'كل قطر' },
   { icon: '💳', en: 'Pay After', ar: 'ادفع بعدين' },
   { icon: '⭐', en: '24/7', ar: '24/7' },
@@ -22,10 +21,7 @@ export default function Hero({ lang = 'en' }: HeroProps) {
 
   function scrollToServices(e: React.MouseEvent<HTMLAnchorElement>) {
     const el = document.querySelector('#services');
-    if (el) {
-      e.preventDefault();
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth' }); }
   }
 
   return (
@@ -38,11 +34,56 @@ export default function Hero({ lang = 'en' }: HeroProps) {
         alignItems: 'stretch',
         position: 'relative',
         overflow: 'hidden',
-        transition: 'background-color 0.2s',
       }}
       dir={ar ? 'rtl' : 'ltr'}
     >
-      {/* ── Left: Content ───────────────────────────── */}
+      {/* ── Background: dot grid ──────────────────────── */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundImage: 'radial-gradient(circle, rgba(224,92,0,0.12) 1.5px, transparent 1.5px)',
+          backgroundSize: '30px 30px',
+          opacity: 0.5,
+          zIndex: 0,
+          pointerEvents: 'none',
+        }}
+      />
+
+      {/* ── Background: large red radial — top right ─── */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          top: '-120px',
+          right: '-120px',
+          width: '600px',
+          height: '600px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(224,92,0,0.10) 0%, transparent 65%)',
+          zIndex: 0,
+          pointerEvents: 'none',
+        }}
+      />
+
+      {/* ── Background: soft red sweep — bottom left ─── */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          bottom: '-80px',
+          left: '-80px',
+          width: '400px',
+          height: '400px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(224,92,0,0.06) 0%, transparent 65%)',
+          zIndex: 0,
+          pointerEvents: 'none',
+        }}
+      />
+
+      {/* ── Left: Content ─────────────────────────────── */}
       <div
         className="hero-content-panel"
         style={{
@@ -51,69 +92,74 @@ export default function Hero({ lang = 'en' }: HeroProps) {
           flexDirection: 'column',
           alignItems: ar ? 'flex-end' : 'flex-start',
           justifyContent: 'center',
-          padding: '6rem 3rem 4rem',
-          gap: '1.5rem',
+          /* 72px navbar + breathing room */
+          padding: '7rem 3rem 4rem',
+          gap: '1.25rem',
           position: 'relative',
           zIndex: 2,
         }}
       >
-        {/* Subtle radial glow */}
-        <div
-          aria-hidden="true"
-          style={{
-            position: 'absolute',
-            top: '40%',
-            left: ar ? 'auto' : '30%',
-            right: ar ? '30%' : 'auto',
-            transform: 'translate(-50%, -50%)',
-            width: '500px',
-            height: '500px',
-            background: 'radial-gradient(circle, rgba(var(--c-accent-rgb),0.08) 0%, transparent 70%)',
-            pointerEvents: 'none',
-            zIndex: 0,
-          }}
-        />
-
-        {/* 1 — Badge pill */}
+        {/* 0 — Brand slogan */}
         <div
           className="animate-fade-in-up animation-delay-100"
           style={{
-            position: 'relative',
-            zIndex: 1,
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.75rem',
+            fontFamily: 'var(--font-inter), sans-serif',
+            fontWeight: 800,
+            fontSize: '0.9375rem',
+            letterSpacing: '0.08em',
+            textTransform: 'uppercase',
+            color: 'var(--c-text)',
+          }}
+        >
+          <span>🔧 {ar ? 'نجي.' : 'WE COME.'}</span>
+          <span style={{ color: 'var(--c-accent)', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 1L1 15h8.5L7 25 21 11h-9L13 1Z"/></svg>
+            {ar ? 'نصلح.' : 'WE FIX.'}
+          </span>
+          <span>🔋 {ar ? 'تروح.' : 'YOU GO.'}</span>
+        </div>
+
+        {/* 1 — Service badge */}
+        <div
+          className="animate-fade-in-up animation-delay-200"
+          style={{
             display: 'inline-flex',
             alignItems: 'center',
             gap: '0.375rem',
-            border: '1px solid rgba(var(--c-accent-rgb),0.35)',
+            border: '1.5px solid rgba(224,92,0,0.3)',
             borderRadius: '9999px',
-            padding: '0.3rem 0.875rem',
+            padding: '0.35rem 1rem',
             fontSize: '0.8125rem',
-            fontWeight: 600,
+            fontWeight: 700,
             color: 'var(--c-accent)',
-            backgroundColor: 'rgba(var(--c-accent-rgb),0.06)',
-            letterSpacing: '0.02em',
+            backgroundColor: 'rgba(224,92,0,0.06)',
+            letterSpacing: '0.03em',
+            textTransform: 'uppercase',
           }}
         >
           <span>⚡</span>
-          <span>Qatar — 24/7 Service</span>
+          <span>{ar ? 'قطر — خدمة 24/7' : 'Qatar — 24/7 Service'}</span>
         </div>
 
         {/* 2 — Warranty badge */}
         <div
-          className="animate-fade-in-up animation-delay-200"
+          className="animate-fade-in-up animation-delay-300"
           style={{
-            position: 'relative',
-            zIndex: 1,
             display: 'inline-flex',
             alignItems: 'center',
             gap: '0.375rem',
-            border: '1px solid rgba(var(--c-accent-rgb),0.35)',
-            borderRadius: '9999px',
-            padding: '0.3rem 0.875rem',
+            backgroundColor: '#FFFFFF',
+            border: '1px solid #E5E7EB',
+            borderLeft: '3px solid var(--c-accent)',
+            borderRadius: '0.5rem',
+            padding: '0.35rem 0.875rem',
             fontSize: '0.8125rem',
             fontWeight: 600,
-            color: 'var(--c-accent)',
-            backgroundColor: 'rgba(var(--c-accent-rgb),0.06)',
-            letterSpacing: '0.02em',
+            color: '#333333',
+            boxShadow: '0 1px 4px rgba(0,0,0,0.05)',
           }}
         >
           <span>🛡️</span>
@@ -121,88 +167,72 @@ export default function Hero({ lang = 'en' }: HeroProps) {
         </div>
 
         {/* 3 — H1 */}
-        <div className="animate-fade-in-up animation-delay-300" style={{ position: 'relative', zIndex: 1 }}>
+        <div className="animate-fade-in-up animation-delay-300">
           <h1
             style={{
               fontFamily: 'var(--font-inter), sans-serif',
-              fontWeight: 800,
-              fontSize: 'clamp(2.5rem, 6vw, 5rem)',
-              lineHeight: 1.1,
+              fontWeight: 900,
+              fontSize: 'clamp(2.75rem, 6.5vw, 5.5rem)',
+              lineHeight: 1.05,
               margin: 0,
               color: 'var(--c-text)',
+              letterSpacing: '-0.02em',
             }}
           >
             {ar ? (
               <>
-                <span style={{ color: 'var(--c-text)' }}>بطاريتك </span>
+                <span>بطاريتك </span>
                 <span style={{ color: 'var(--c-accent)' }}>وقفت؟</span>
               </>
             ) : (
               <>
-                <span style={{ color: 'var(--c-text)' }}>Battery </span>
+                <span>Battery </span>
                 <span style={{ color: 'var(--c-accent)' }}>Dead?</span>
               </>
             )}
           </h1>
-
           <p
             style={{
               fontFamily: 'var(--font-inter), sans-serif',
-              fontWeight: 800,
-              fontSize: 'clamp(1.75rem, 4.5vw, 3.5rem)',
-              lineHeight: 1.15,
-              margin: '0.25rem 0 0',
-              color: 'var(--c-accent)',
+              fontWeight: 900,
+              fontSize: 'clamp(2rem, 5vw, 4rem)',
+              lineHeight: 1.1,
+              margin: '0.2rem 0 0',
+              color: 'var(--c-text)',
+              letterSpacing: '-0.02em',
             }}
           >
-            {ar ? 'نجي عندك' : 'We Come to You'}
+            {ar ? (
+              <>نجي <span style={{ color: 'var(--c-accent)' }}>عندك</span></>
+            ) : (
+              <>We Come <span style={{ color: 'var(--c-accent)' }}>To You</span></>
+            )}
           </p>
         </div>
 
-        {/* 4 — Subtitle */}
+        {/* 4 — Body text */}
         <p
           className="animate-fade-in-up animation-delay-400"
           style={{
-            position: 'relative',
-            zIndex: 1,
-            fontFamily: 'var(--font-cairo), sans-serif',
-            fontWeight: 500,
-            fontSize: '1.125rem',
-            color: 'var(--c-muted)',
-            margin: 0,
-            lineHeight: 1.6,
-          }}
-          lang="ar"
-          dir="rtl"
-        >
-          بطاريتك وقفت؟ نجي عندك في 30 دقيقة
-        </p>
-
-        {/* 5 — Body text EN */}
-        <p
-          className="animate-fade-in-up animation-delay-400"
-          style={{
-            position: 'relative',
-            zIndex: 1,
-            fontFamily: 'var(--font-inter), sans-serif',
+            fontFamily: ar ? 'var(--font-cairo), sans-serif' : 'var(--font-inter), sans-serif',
             fontWeight: 400,
-            fontSize: '1rem',
+            fontSize: '1.0625rem',
             color: 'var(--c-muted)',
             margin: 0,
             lineHeight: 1.7,
-            maxWidth: '440px',
+            maxWidth: '460px',
           }}
+          lang={ar ? 'ar' : 'en'}
         >
-          On-demand battery replacement &amp; electrical service across Qatar.
-          30 minutes or less. Pay after service.
+          {ar
+            ? 'خدمة بطارية سيارة متنقلة في كل قطر. نصل في 10 دقائق أو أقل. ادفع بعد الخدمة.'
+            : 'On-demand battery replacement & electrical service across Qatar. 10 minutes or less. Pay after service.'}
         </p>
 
-        {/* 6 — CTA Buttons */}
+        {/* 5 — CTA Buttons */}
         <div
           className="animate-fade-in-up animation-delay-500 hero-cta-group"
           style={{
-            position: 'relative',
-            zIndex: 1,
             display: 'flex',
             flexWrap: 'wrap',
             gap: '0.875rem',
@@ -226,20 +256,22 @@ export default function Hero({ lang = 'en' }: HeroProps) {
               fontFamily: 'var(--font-inter), sans-serif',
               fontWeight: 700,
               fontSize: '1rem',
-              padding: '0.875rem 1.75rem',
+              padding: '0.9rem 1.875rem',
               borderRadius: '0.625rem',
               textDecoration: 'none',
               minHeight: '52px',
-              transition: 'background-color 0.15s, transform 0.1s',
-              boxShadow: '0 4px 20px rgba(37,211,102,0.25)',
+              transition: 'background-color 0.15s, transform 0.15s, box-shadow 0.15s',
+              boxShadow: '0 4px 20px rgba(37,211,102,0.35)',
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.backgroundColor = '#1ebe5d';
-              e.currentTarget.style.transform = 'translateY(-1px)';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = '0 8px 28px rgba(37,211,102,0.4)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.backgroundColor = '#25D366';
               e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 4px 20px rgba(37,211,102,0.35)';
             }}
           >
             <WhatsAppIcon />
@@ -256,27 +288,30 @@ export default function Hero({ lang = 'en' }: HeroProps) {
               alignItems: 'center',
               justifyContent: 'center',
               gap: '0.5rem',
-              backgroundColor: 'transparent',
+              backgroundColor: '#FFFFFF',
               color: 'var(--c-accent)',
               fontFamily: 'var(--font-inter), sans-serif',
-              fontWeight: 600,
+              fontWeight: 700,
               fontSize: '1rem',
-              padding: '0.875rem 1.75rem',
+              padding: '0.9rem 1.875rem',
               borderRadius: '0.625rem',
               textDecoration: 'none',
               border: '2px solid var(--c-accent)',
               minHeight: '52px',
-              transition: 'background-color 0.15s, color 0.15s, transform 0.1s',
+              transition: 'background-color 0.15s, color 0.15s, transform 0.15s, box-shadow 0.15s',
+              boxShadow: '0 2px 8px rgba(224,92,0,0.12)',
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.backgroundColor = 'var(--c-accent)';
-              e.currentTarget.style.color = '#111111';
-              e.currentTarget.style.transform = 'translateY(-1px)';
+              e.currentTarget.style.color = '#FFFFFF';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = '0 8px 24px rgba(224,92,0,0.25)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'transparent';
+              e.currentTarget.style.backgroundColor = '#FFFFFF';
               e.currentTarget.style.color = 'var(--c-accent)';
               e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(224,92,0,0.12)';
             }}
           >
             <span>شوف خدماتنا | Our Services</span>
@@ -284,12 +319,10 @@ export default function Hero({ lang = 'en' }: HeroProps) {
           </a>
         </div>
 
-        {/* 7 — Trust badges */}
+        {/* 6 — Trust badges */}
         <div
           className="animate-fade-in-up animation-delay-600"
           style={{
-            position: 'relative',
-            zIndex: 1,
             display: 'flex',
             flexWrap: 'wrap',
             gap: '0.5rem',
@@ -304,25 +337,26 @@ export default function Hero({ lang = 'en' }: HeroProps) {
                 display: 'flex',
                 alignItems: 'center',
                 gap: '0.375rem',
-                backgroundColor: 'var(--c-surface)',
-                border: '1px solid var(--c-border)',
+                backgroundColor: '#FFFFFF',
+                border: '1px solid #E5E7EB',
+                borderTop: '2px solid var(--c-accent)',
                 borderRadius: '0.5rem',
                 padding: '0.5rem 0.875rem',
                 fontSize: '0.875rem',
-                fontWeight: 500,
+                fontWeight: 600,
                 color: 'var(--c-text)',
                 whiteSpace: 'nowrap',
-                transition: 'background-color 0.2s, border-color 0.2s, color 0.2s',
+                boxShadow: '0 1px 4px rgba(0,0,0,0.05)',
               }}
             >
-              <span aria-hidden="true">{badge.icon}</span>
+              <span aria-hidden="true" style={{ fontSize: '1rem' }}>{badge.icon}</span>
               <span>{ar ? badge.ar : badge.en}</span>
             </div>
           ))}
         </div>
       </div>
 
-      {/* ── Right: Stock Image ───────────────────────── */}
+      {/* ── Right: Car Image ──────────────────────────── */}
       <div
         className="hero-image-panel"
         style={{
@@ -339,15 +373,15 @@ export default function Hero({ lang = 'en' }: HeroProps) {
           style={{ objectFit: 'cover', objectPosition: 'center' }}
           sizes="(max-width: 900px) 0px, 45vw"
         />
-        {/* Gradient blend: left edge fades into page bg */}
+        {/* Blend left edge into page bg */}
         <div
           aria-hidden="true"
           style={{
             position: 'absolute',
             inset: 0,
             background: ar
-              ? 'linear-gradient(to left, transparent 50%, var(--c-bg) 100%)'
-              : 'linear-gradient(to right, var(--c-bg) 0%, transparent 50%)',
+              ? 'linear-gradient(to left, transparent 40%, var(--c-bg) 100%)'
+              : 'linear-gradient(to right, var(--c-bg) 0%, transparent 45%)',
             zIndex: 1,
           }}
         />
@@ -364,25 +398,40 @@ export default function Hero({ lang = 'en' }: HeroProps) {
             zIndex: 1,
           }}
         />
-        {/* Subtle yellow accent top-right corner */}
+        {/* Red accent corner glow */}
         <div
           aria-hidden="true"
           style={{
             position: 'absolute',
-            top: '-40px',
-            right: ar ? 'auto' : '-40px',
-            left: ar ? '-40px' : 'auto',
-            width: '200px',
-            height: '200px',
-            background: 'radial-gradient(circle, rgba(var(--c-accent-rgb),0.15) 0%, transparent 70%)',
+            top: '-60px',
+            right: ar ? 'auto' : '-60px',
+            left: ar ? '-60px' : 'auto',
+            width: '280px',
+            height: '280px',
+            background: 'radial-gradient(circle, rgba(224,92,0,0.18) 0%, transparent 70%)',
             zIndex: 2,
+          }}
+        />
+        {/* Bold red stripe along image edge */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            top: 0,
+            bottom: 0,
+            left: ar ? 'auto' : 0,
+            right: ar ? 0 : 'auto',
+            width: '4px',
+            background: 'linear-gradient(to bottom, transparent, var(--c-accent) 30%, var(--c-accent) 70%, transparent)',
+            zIndex: 3,
+            opacity: 0.6,
           }}
         />
       </div>
 
       {/* Scroll hint */}
       <div
-        className="animate-fade-in-up animation-delay-500"
+        className="animate-fade-in-up animation-delay-600"
         aria-hidden="true"
         style={{
           position: 'absolute',
@@ -393,13 +442,11 @@ export default function Hero({ lang = 'en' }: HeroProps) {
           flexDirection: 'column',
           alignItems: 'center',
           gap: '0.25rem',
-          opacity: 0.4,
+          opacity: 0.35,
           zIndex: 5,
         }}
       >
-        <span style={{ fontSize: '0.6875rem', color: 'var(--c-muted)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-          scroll
-        </span>
+        <span style={{ fontSize: '0.625rem', color: 'var(--c-muted)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>scroll</span>
         <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
           <rect x="1" y="1" width="14" height="22" rx="7" stroke="var(--c-muted)" strokeWidth="1.5"/>
           <circle cx="8" cy="7" r="2" fill="var(--c-accent)">
@@ -414,11 +461,10 @@ export default function Hero({ lang = 'en' }: HeroProps) {
           .hero-content-panel {
             align-items: center !important;
             text-align: center !important;
-            padding: 5.5rem 1.25rem 3rem !important;
+            padding: 6.5rem 1.25rem 3rem !important;
             flex: 1 !important;
           }
-          .hero-content-panel > div:last-child,
-          .hero-content-panel > div[aria-label] {
+          .hero-cta-group {
             justify-content: center !important;
           }
         }

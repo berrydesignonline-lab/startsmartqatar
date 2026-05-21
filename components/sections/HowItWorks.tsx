@@ -22,8 +22,8 @@ const STEPS: Step[] = [
     number: '02',
     titleEn: 'We Come to You',
     titleAr: 'نجي عندك',
-    descEn: 'Our team arrives at your location in 30 minutes or less — anywhere in Qatar.',
-    descAr: 'فريقنا يوصلك خلال 30 دقيقة أو أقل — أي مكان في قطر',
+    descEn: 'Our team arrives at your location in 10 minutes or less — anywhere in Qatar.',
+    descAr: 'فريقنا يوصلك خلال 10 دقائق أو أقل — أي مكان في قطر',
   },
   {
     number: '03',
@@ -62,7 +62,7 @@ export default function HowItWorks({ lang = 'en' }: HowItWorksProps) {
               fontSize: '0.75rem',
               letterSpacing: '0.12em',
               textTransform: 'uppercase',
-              color: '#888888',
+              color: '#AAAAAA',
               marginBottom: '0.75rem',
             }}
           >
@@ -185,7 +185,7 @@ function StepCard({ step, ar, isLast }: { step: Step; ar: boolean; isLast: boole
           height: '56px',
           borderRadius: '50%',
           border: '2px solid var(--c-accent)',
-          backgroundColor: '#1A1A1A',
+          backgroundColor: 'var(--c-accent)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -199,7 +199,7 @@ function StepCard({ step, ar, isLast }: { step: Step; ar: boolean; isLast: boole
             fontFamily: 'var(--font-inter), sans-serif',
             fontWeight: 800,
             fontSize: '1.125rem',
-            color: 'var(--c-accent)',
+            color: '#FFFFFF',
             lineHeight: 1,
           }}
         >
@@ -239,7 +239,7 @@ function StepCard({ step, ar, isLast }: { step: Step; ar: boolean; isLast: boole
             fontFamily: ar ? 'var(--font-cairo), sans-serif' : 'var(--font-inter), sans-serif',
             fontWeight: 400,
             fontSize: '0.9375rem',
-            color: '#888888',
+            color: '#BBBBBB',
             margin: 0,
             lineHeight: 1.65,
           }}

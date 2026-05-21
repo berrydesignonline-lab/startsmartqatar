@@ -16,27 +16,15 @@
 }
 
 /* ── Theme Variables ────────────────────────────────────── */
-:root,
-[data-theme="dark"] {
-  --c-bg:          #111111;
-  --c-surface:     #1A1A1A;
-  --c-text:        #FFFFFF;
-  --c-muted:       #888888;
-  --c-border:      #2a2a2a;
-  --c-accent:      #FFD600;
-  --c-accent-hover:#e6c000;
-  --c-accent-rgb:  255, 214, 0;
-}
-
-[data-theme="light"] {
+:root {
   --c-bg:          #F8F9FA;
   --c-surface:     #FFFFFF;
   --c-text:        #111111;
   --c-muted:       #555555;
   --c-border:      #E5E7EB;
-  --c-accent:      #E63030;
-  --c-accent-hover:#C41B1B;
-  --c-accent-rgb:  230, 48, 48;
+  --c-accent:      #E05C00;
+  --c-accent-hover:#B84A00;
+  --c-accent-rgb:  224, 92, 0;
 }
 
 /* ── Base ──────────────────────────────────────────────── */
@@ -64,7 +52,7 @@ html[lang="ar"] {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #111111;
+  background: #F0F0F0;
 }
 ::-webkit-scrollbar-thumb {
   background: var(--c-accent);
@@ -77,7 +65,7 @@ html[lang="ar"] {
 /* Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--c-accent) #111111;
+  scrollbar-color: var(--c-accent) #F0F0F0;
 }
 
 /* ── Animations ────────────────────────────────────────── */

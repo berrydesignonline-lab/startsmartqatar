@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" fill="none">
+  <defs>
+    <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#E63030" stop-opacity="0.18"/>
+      <stop offset="70%" stop-color="#E63030" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#E63030" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="termGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#E63030" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#E63030" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softBlur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+    <filter id="termBlur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+    <pattern id="hexGrid" x="0" y="0" width="60" height="52" patternUnits="userSpaceOnUse">
+      <path d="M30 2 L58 17 L58 47 L30 62 L2 47 L2 17 Z"
+            fill="none" stroke="#E63030" stroke-width="0.4" opacity="0.18"/>
+    </pattern>
+  </defs>
+
+  <!-- Hex grid background texture -->
+  <rect width="1200" height="800" fill="url(#hexGrid)"/>
+
+  <!-- Center ambient glow -->
+  <ellipse cx="600" cy="400" rx="400" ry="280" fill="url(#centerGlow)" filter="url(#softBlur)"/>
+
+  <!-- ── BATTERY BODY ─────────────────────────────────── -->
+  <!-- Outer shell -->
+  <rect x="180" y="210" width="840" height="380" rx="22"
+        fill="#111111" fill-opacity="0.3"
+        stroke="#E63030" stroke-width="2.5" stroke-opacity="0.65"/>
+
+  <!-- Inner bevel highlight (top edge) -->
+  <rect x="185" y="215" width="830" height="12" rx="8"
+        fill="#E63030" fill-opacity="0.06"/>
+
+  <!-- Cell dividers (6 cells) -->
+  <line x1="320" y1="210" x2="320" y2="590" stroke="#E63030" stroke-width="1.4" stroke-opacity="0.3"/>
+  <line x1="460" y1="210" x2="460" y2="590" stroke="#E63030" stroke-width="1.4" stroke-opacity="0.3"/>
+  <line x1="600" y1="210" x2="600" y2="590" stroke="#E63030" stroke-width="1.4" stroke-opacity="0.3"/>
+  <line x1="740" y1="210" x2="740" y2="590" stroke="#E63030" stroke-width="1.4" stroke-opacity="0.3"/>
+  <line x1="880" y1="210" x2="880" y2="590" stroke="#E63030" stroke-width="1.4" stroke-opacity="0.3"/>
+
+  <!-- Cell vent caps row -->
+  <rect x="200" y="232" width="760" height="28" rx="6"
+        fill="#E63030" fill-opacity="0.04"
+        stroke="#E63030" stroke-width="1" stroke-opacity="0.25"/>
+
+  <!-- Individual vent caps -->
+  <rect x="215" y="237" width="98" height="18" rx="4" fill="#E63030" fill-opacity="0.06" stroke="#E63030" stroke-width="0.8" stroke-opacity="0.3"/>
+  <rect x="355" y="237" width="98" height="18" rx="4" fill="#E63030" fill-opacity="0.06" stroke="#E63030" stroke-width="0.8" stroke-opacity="0.3"/>
+  <rect x="495" y="237" width="98" height="18" rx="4" fill="#E63030" fill-opacity="0.06" stroke="#E63030" stroke-width="0.8" stroke-opacity="0.3"/>
+  <rect x="635" y="237" width="98" height="18" rx="4" fill="#E63030" fill-opacity="0.06" stroke="#E63030" stroke-width="0.8" stroke-opacity="0.3"/>
+  <rect x="775" y="237" width="98" height="18" rx="4" fill="#E63030" fill-opacity="0.06" stroke="#E63030" stroke-width="0.8" stroke-opacity="0.3"/>
+  <rect x="880" y="237" width="82" height="18" rx="4" fill="#E63030" fill-opacity="0.06" stroke="#E63030" stroke-width="0.8" stroke-opacity="0.3"/>
+
+  <!-- Top cap / lid -->
+  <rect x="180" y="185" width="840" height="30" rx="10"
+        fill="#111111" fill-opacity="0.4"
+        stroke="#E63030" stroke-width="2" stroke-opacity="0.5"/>
+
+  <!-- ── POSITIVE TERMINAL (+) ───────────────────────── -->
+  <!-- Terminal glow (behind) -->
+  <ellipse cx="290" cy="158" rx="42" ry="28" fill="#E63030" filter="url(#termBlur)" opacity="0.35"/>
+  <!-- Terminal base -->
+  <rect x="258" y="128" width="64" height="60" rx="10"
+        fill="#111111" fill-opacity="0.6"
+        stroke="#E63030" stroke-width="2.5" stroke-opacity="0.9"/>
+  <!-- Terminal top -->
+  <rect x="268" y="120" width="44" height="16" rx="4"
+        fill="#E63030" fill-opacity="0.7"
+        stroke="#E63030" stroke-width="1.5"/>
+  <!-- + label -->
+  <text x="290" y="168" text-anchor="middle" dominant-baseline="middle"
+        fill="#E63030" font-family="Arial, sans-serif"
+        font-size="28" font-weight="900" opacity="0.95">+</text>
+
+  <!-- ── NEGATIVE TERMINAL (−) ──────────────────────── -->
+  <rect x="878" y="128" width="64" height="60" rx="10"
+        fill="#111111" fill-opacity="0.6"
+        stroke="#888888" stroke-width="2.5" stroke-opacity="0.7"/>
+  <rect x="888" y="120" width="44" height="16" rx="4"
+        fill="#888888" fill-opacity="0.5"
+        stroke="#888888" stroke-width="1.5"/>
+  <text x="910" y="168" text-anchor="middle" dominant-baseline="middle"
+        fill="#888888" font-family="Arial, sans-serif"
+        font-size="32" font-weight="900" opacity="0.85">−</text>
+
+  <!-- ── LIGHTNING BOLTS ────────────────────────────── -->
+  <!-- Main center bolt -->
+  <path d="M625 240 L580 375 L612 375 L565 560 L618 382 L586 382 Z"
+        fill="#E63030" opacity="0.22"/>
+  <!-- Center bolt glow -->
+  <path d="M625 240 L580 375 L612 375 L565 560 L618 382 L586 382 Z"
+        fill="#E63030" opacity="0.08" filter="url(#softBlur)"/>
+
+  <!-- Small bolt — top left -->
+  <path d="M98 95 L80 148 L94 148 L74 200 L92 154 L78 154 Z"
+        fill="#E63030" opacity="0.18"/>
+
+  <!-- Small bolt — bottom right -->
+  <path d="M1108 590 L1090 643 L1104 643 L1084 695 L1102 649 L1088 649 Z"
+        fill="#E63030" opacity="0.15"/>
+
+  <!-- Small bolt — top right -->
+  <path d="M1050 80 L1038 118 L1046 118 L1032 155 L1044 122 L1036 122 Z"
+        fill="#E63030" opacity="0.14"/>
+
+  <!-- Small bolt — bottom left -->
+  <path d="M148 640 L136 678 L144 678 L130 715 L142 682 L134 682 Z"
+        fill="#E63030" opacity="0.14"/>
+
+  <!-- ── ENERGY RINGS ────────────────────────────────── -->
+  <circle cx="600" cy="400" r="230" stroke="#E63030" stroke-width="1"
+          stroke-dasharray="10 18" stroke-opacity="0.12"/>
+  <circle cx="600" cy="400" r="310" stroke="#E63030" stroke-width="0.7"
+          stroke-dasharray="5 22" stroke-opacity="0.08"/>
+  <circle cx="600" cy="400" r="400" stroke="#E63030" stroke-width="0.5"
+          stroke-dasharray="3 28" stroke-opacity="0.05"/>
+
+  <!-- ── CORNER BRACKETS ────────────────────────────── -->
+  <path d="M24 24 L80 24" stroke="#E63030" stroke-width="2.5" stroke-opacity="0.35" stroke-linecap="round"/>
+  <path d="M24 24 L24 80" stroke="#E63030" stroke-width="2.5" stroke-opacity="0.35" stroke-linecap="round"/>
+
+  <path d="M1176 24 L1120 24" stroke="#E63030" stroke-width="2.5" stroke-opacity="0.35" stroke-linecap="round"/>
+  <path d="M1176 24 L1176 80" stroke="#E63030" stroke-width="2.5" stroke-opacity="0.35" stroke-linecap="round"/>
+
+  <path d="M24 776 L80 776" stroke="#E63030" stroke-width="2.5" stroke-opacity="0.35" stroke-linecap="round"/>
+  <path d="M24 776 L24 720" stroke="#E63030" stroke-width="2.5" stroke-opacity="0.35" stroke-linecap="round"/>
+
+  <path d="M1176 776 L1120 776" stroke="#E63030" stroke-width="2.5" stroke-opacity="0.35" stroke-linecap="round"/>
+  <path d="M1176 776 L1176 720" stroke="#E63030" stroke-width="2.5" stroke-opacity="0.35" stroke-linecap="round"/>
+
+  <!-- ── FLOATING SMALL BOLTS (scattered) ──────────── -->
+  <path d="M68 340 L59 366 L65 366 L55 392 L64 369 L58 369 Z"
+        fill="#E63030" opacity="0.1"/>
+  <path d="M1132 280 L1123 306 L1129 306 L1119 332 L1128 309 L1122 309 Z"
+        fill="#E63030" opacity="0.1"/>
+
+  <!-- Tech dot accents at cell centres -->
+  <circle cx="250" cy="420" r="5" fill="#E63030" fill-opacity="0.2"/>
+  <circle cx="390" cy="420" r="5" fill="#E63030" fill-opacity="0.2"/>
+  <circle cx="530" cy="420" r="5" fill="#E63030" fill-opacity="0.2"/>
+  <circle cx="670" cy="420" r="5" fill="#E63030" fill-opacity="0.2"/>
+  <circle cx="810" cy="420" r="5" fill="#E63030" fill-opacity="0.2"/>
+  <circle cx="950" cy="420" r="5" fill="#E63030" fill-opacity="0.2"/>
+</svg>

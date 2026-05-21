@@ -17,7 +17,7 @@ const faqSchema = {
     {
       '@type': 'Question',
       name: 'How fast do you arrive?',
-      acceptedAnswer: { '@type': 'Answer', text: '30 minutes or less anywhere in Qatar.' },
+      acceptedAnswer: { '@type': 'Answer', text: '10 minutes or less anywhere in Qatar.' },
     },
     {
       '@type': 'Question',
@@ -38,7 +38,7 @@ const faqSchema = {
 };
 
 const FAQ_ITEMS = [
-  { q: 'How fast do you arrive?', a: '30 minutes or less anywhere in Qatar.' },
+  { q: 'How fast do you arrive?', a: '10 minutes or less anywhere in Qatar.' },
   { q: 'Do I pay before or after?', a: 'Always after the service is done.' },
   { q: 'What areas do you cover?', a: 'All areas across Qatar.' },
   { q: 'Do you work 24/7?', a: 'Yes, including weekends and holidays.' },
@@ -223,7 +223,7 @@ export default function ContactForm({ lang = 'en' }: ContactFormProps) {
                     disabled={status === 'loading'}
                     style={{
                       backgroundColor: status === 'loading' ? 'var(--c-accent-hover)' : 'var(--c-accent)',
-                      color: '#111111',
+                      color: '#FFFFFF',
                       fontFamily: 'var(--font-inter), sans-serif',
                       fontWeight: 700,
                       fontSize: '1rem',

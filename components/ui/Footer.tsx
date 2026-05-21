@@ -44,10 +44,10 @@ export default function Footer({ lang = 'en' }: FooterProps) {
           {/* Logo */}
           <Link href="/" style={{ textDecoration: 'none', display: 'inline-flex', width: 'fit-content' }}>
             <Image
-              src="/images/logodark.webp"
+              src="/white1.webp"
               alt="StartSmart Logo"
-              width={150}
-              height={47}
+              width={160}
+              height={86}
               style={{ objectFit: 'contain' }}
             />
           </Link>

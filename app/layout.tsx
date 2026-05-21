@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     template: '%s | StartSmart Qatar',
   },
   description:
-    "Qatar's fastest on-demand car battery replacement & electrical service. Delivered to your location in 30 minutes. Available 24/7. Pay after service.",
+    "Qatar's fastest on-demand car battery replacement & electrical service. Delivered to your location in 10 minutes. Available 24/7. Pay after service.",
   keywords: [
     'battery delivery Qatar',
     'car battery replacement Qatar',
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     url: SITE_URL,
     siteName: 'StartSmart Qatar',
     title: 'StartSmart — Battery & Electrical Qatar',
-    description: 'Car battery dead? We come to you in 30 min. 24/7 across Qatar.',
+    description: 'Car battery dead? We come to you in 10 min. 24/7 across Qatar.',
     images: [
       {
         url: '/opengraph-image',
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'StartSmart — Battery Qatar',
-    description: 'On-demand battery & electrical service. 30 min. 24/7.',
+    description: 'On-demand battery & electrical service. 10 min. 24/7.',
   },
   alternates: {
     canonical: SITE_URL,
@@ -76,10 +76,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: [
-    { media: '(prefers-color-scheme: dark)', color: '#FFD600' },
-    { media: '(prefers-color-scheme: light)', color: '#E63030' },
-  ],
+  themeColor: '#E05C00',
 };
 
 const localBusinessSchema = {
@@ -90,7 +87,7 @@ const localBusinessSchema = {
   '@id': SITE_URL,
   url: SITE_URL,
   telephone: `+${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '97400000000'}`,
-  description: 'On-demand car battery delivery and electrical repair service in Qatar. Available 24/7. We arrive in 30 minutes.',
+  description: 'On-demand car battery delivery and electrical repair service in Qatar. Available 24/7. We arrive in 10 minutes.',
   priceRange: 'QAR 150–500',
   currenciesAccepted: 'QAR',
   paymentAccepted: 'Cash, Credit Card',
@@ -123,7 +120,7 @@ const localBusinessSchema = {
         itemOffered: {
           '@type': 'Service',
           name: 'Car Battery Replacement Qatar',
-          description: 'On-site car battery replacement anywhere in Qatar. We come to you in 30 minutes.',
+          description: 'On-site car battery replacement anywhere in Qatar. We come to you in 10 minutes.',
           url: `${SITE_URL}/services/battery-replacement`,
         },
       },
@@ -159,15 +156,8 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" data-theme="dark" className={`${inter.variable} ${cairo.variable}`}>
+    <html lang="en" data-theme="light" className={`${inter.variable} ${cairo.variable}`}>
       <head>
-        {/* Prevent flash of unstyled theme on load */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();`,
-          }}
-        />
-        {/* LocalBusiness structured data — in <head> for immediate crawlability */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}

@@ -74,8 +74,8 @@ export default function WhatsAppCTA({ lang = 'en' }: WhatsAppCTAProps) {
           lang={ar ? 'ar' : 'en'}
         >
           {ar
-            ? 'تكلم معنا الحين — نرد في دقائق ونوصل في 30'
-            : 'Chat with us now — we respond in minutes, arrive in 30.'}
+            ? 'تكلم معنا الحين — نرد في دقائق ونوصل في 10 دقائق'
+            : 'Chat with us now — we respond in minutes, arrive in 10.'}
         </p>
 
         {/* Button */}

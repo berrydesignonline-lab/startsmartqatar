@@ -53,7 +53,7 @@ export default function OgImage() {
 
         {/* Subtext */}
         <div style={{ fontSize: 24, color: '#888888', textAlign: 'center' }}>
-          On-demand battery replacement · 30 minutes · 24/7 across Qatar
+          On-demand battery replacement · 10 minutes · 24/7 across Qatar
         </div>
 
         {/* URL */}

@@ -4,7 +4,7 @@ interface Stat {
 }
 
 const STATS: Stat[] = [
-  { number: '30',       label: 'دقيقة وصول | Min Delivery' },
+  { number: '10',       label: 'دقائق وصول | Min Arrival' },
   { number: '24/7',     label: 'متاحون دائماً | Always Available' },
   { number: 'All Qatar', label: 'تغطية كاملة | Full Coverage' },
 ];
@@ -30,7 +30,7 @@ export default function StatsBar() {
             alignItems: 'center',
             justifyContent: 'center',
             gap: '2px',
-            borderLeft: i > 0 ? '1px solid rgba(17,17,17,0.2)' : 'none',
+            borderLeft: i > 0 ? '1px solid rgba(255,255,255,0.25)' : 'none',
           }}
         >
           <span
@@ -39,7 +39,7 @@ export default function StatsBar() {
               fontWeight: 800,
               fontSize: 'clamp(1.25rem, 4vw, 1.75rem)',
               lineHeight: 1,
-              color: '#111111',
+              color: '#FFFFFF',
             }}
           >
             {stat.number}
@@ -50,7 +50,7 @@ export default function StatsBar() {
               fontWeight: 400,
               fontSize: 'clamp(0.625rem, 1.8vw, 0.75rem)',
               lineHeight: 1.3,
-              color: '#111111',
+              color: '#FFFFFF',
               textAlign: 'center',
               padding: '0 0.25rem',
             }}

@@ -110,7 +110,7 @@ export default async function Testimonials({ lang = 'en' }: TestimonialsProps) {
               href={reviewUrl}
               target="_blank"
               rel="noopener noreferrer"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', backgroundColor: 'var(--c-accent)', color: '#111111', fontWeight: 700, fontSize: '0.9375rem', padding: '0.75rem 1.5rem', borderRadius: '0.5rem', textDecoration: 'none' }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', backgroundColor: 'var(--c-accent)', color: '#FFFFFF', fontWeight: 700, fontSize: '0.9375rem', padding: '0.75rem 1.5rem', borderRadius: '0.5rem', textDecoration: 'none' }}
             >
               {ar ? 'اكتب تقييم على Google' : 'Leave a Google Review'}
             </a>

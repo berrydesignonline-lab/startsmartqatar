@@ -36,13 +36,13 @@ const SERVICES: Service[] = [
     icon: <BoltIcon />,
     titleEn: 'Emergency Jump Start',
     titleAr: 'شحن طوارئ',
-    descEn: 'Battery flat? Our team reaches you in 30 minutes anywhere in Qatar.',
-    descAr: 'بطاريتك فرغت؟ نوصلك خلال 30 دقيقة في أي مكان بقطر',
+    descEn: 'Battery flat? Our team reaches you in 10 minutes anywhere in Qatar.',
+    descAr: 'بطاريتك فرغت؟ نوصلك خلال 10 دقائق في أي مكان بقطر',
     ctaEn: 'Learn More →',
     ctaAr: '← اعرف أكثر',
     slug: 'jump-start',
     schemaName: 'Emergency Jump Start Qatar',
-    schemaDesc: 'Emergency battery jump start service reaching customers within 30 minutes across Qatar.',
+    schemaDesc: 'Emergency battery jump start service reaching customers within 10 minutes across Qatar.',
   },
   {
     icon: <WrenchIcon />,
@@ -209,7 +209,7 @@ function ServiceCard({ service, ar }: { service: Service; ar: boolean }) {
         style={{
           width: '48px',
           height: '48px',
-          backgroundColor: '#111111',
+          backgroundColor: 'var(--c-accent)',
           borderRadius: '0.5rem',
           display: 'flex',
           alignItems: 'center',
@@ -285,9 +285,9 @@ function ServiceCard({ service, ar }: { service: Service; ar: boolean }) {
 function BatteryIcon() {
   return (
     <svg width="26" height="16" viewBox="0 0 26 16" fill="none" aria-hidden="true">
-      <rect x="0.75" y="0.75" width="22.5" height="14.5" rx="2.25" stroke="var(--c-accent)" strokeWidth="1.5" />
-      <rect x="23.5" y="5.5" width="2.25" height="5" rx="1" fill="var(--c-accent)" />
-      <path d="M14.5 2L9 9h4L11 14 17 7h-4l1.5-5Z" fill="var(--c-accent)" />
+      <rect x="0.75" y="0.75" width="22.5" height="14.5" rx="2.25" stroke="#FFFFFF" strokeWidth="1.5" />
+      <rect x="23.5" y="5.5" width="2.25" height="5" rx="1" fill="#FFFFFF" />
+      <path d="M14.5 2L9 9h4L11 14 17 7h-4l1.5-5Z" fill="#FFFFFF" />
     </svg>
   );
 }
@@ -297,8 +297,8 @@ function BoltIcon() {
     <svg width="22" height="26" viewBox="0 0 22 26" fill="none" aria-hidden="true">
       <path
         d="M13 1L1 15h8.5L7 25 21 11h-9L13 1Z"
-        fill="var(--c-accent)"
-        stroke="var(--c-accent)"
+        fill="#FFFFFF"
+        stroke="#FFFFFF"
         strokeWidth="0.5"
         strokeLinejoin="round"
       />
@@ -311,7 +311,7 @@ function WrenchIcon() {
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path
         d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.77z"
-        stroke="var(--c-accent)"
+        stroke="#FFFFFF"
         strokeWidth="1.75"
         strokeLinecap="round"
         strokeLinejoin="round"

@@ -13,7 +13,7 @@ import FloatingCTA from '@/components/ui/FloatingCTA';
 
 export const metadata: Metadata = {
   title: 'ستارت سمارت قطر — توصيل وتركيب بطاريات السيارات في قطر',
-  description: 'خدمة توصيل وتركيب بطاريات السيارات في قطر. نصل إليك في أي مكان خلال 30 دقيقة. تغطي الخدمة الدوحة، الريان، لوسيل والمناطق المجاورة.',
+  description: 'خدمة توصيل وتركيب بطاريات السيارات في قطر. نصل إليك في أي مكان خلال 10 دقائق. تغطي الخدمة الدوحة، الريان، لوسيل والمناطق المجاورة.',
   alternates: { canonical: 'https://startsmartqatar.com/ar' },
 };
 
