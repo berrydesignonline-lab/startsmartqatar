@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     description: 'On-demand battery & electrical service. 10 min. 24/7.',
   },
   alternates: {
-    canonical: SITE_URL,
+    canonical: "/",
     languages: {
       ar: `${SITE_URL}/ar`,
       en: SITE_URL,

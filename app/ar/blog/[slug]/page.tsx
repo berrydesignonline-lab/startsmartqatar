@@ -41,7 +41,13 @@ export async function generateMetadata(
         images: [{ url: urlFor(post.mainImage).width(1200).height(630).url() }],
       }),
     },
-    alternates: { canonical: `https://startsmartqatar.com/ar/blog/${slug}` },
+    alternates: {
+      canonical: `/ar/blog/${slug}`,
+      languages: {
+        en: `/blog/${slug}`,
+        ar: `/ar/blog/${slug}`,
+      },
+    },
   };
 }
 
