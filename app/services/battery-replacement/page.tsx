@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_URL}/services/battery-replacement`,
     languages: { ar: `${SITE_URL}/ar/services/battery-replacement` },
   },
+  openGraph: { url: `${SITE_URL}/services/battery-replacement` },
 };
 
 export default function Page() {

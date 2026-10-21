@@ -16,23 +16,39 @@ const STEPS: Step[] = [
     titleEn: 'Contact Us on WhatsApp',
     titleAr: 'تواصل معنا على واتساب',
     descEn: 'Tell us your car model and location. Takes 30 seconds.',
-    descAr: 'قولنا نوع سيارتك وموقعك. ما تاخذ إلا 30 ثانية.',
+    descAr: 'نوع سيارتك ومكانك — وما تاخذ غير ٣٠ ثانية',
   },
   {
     number: '02',
     titleEn: 'We Come to You',
-    titleAr: 'نجي عندك',
-    descEn: 'Our team arrives at your location in 10 minutes or less — anywhere in Qatar.',
-    descAr: 'فريقنا يوصلك خلال 10 دقائق أو أقل — أي مكان في قطر',
+    titleAr: 'نصل إليك',
+    descEn: 'Our specialized team arrives at your location quickly — across all areas of Qatar.',
+    descAr: 'فريقنا المتخصص يصل إليك في أسرع وقت — داخل كل مناطق قطر',
   },
   {
     number: '03',
     titleEn: 'Pay After Service',
     titleAr: 'تدفع بعد الخدمة',
     descEn: 'Job done, car running. Pay by cash or card only after we finish.',
-    descAr: 'الشغل خلص، السيارة اشتغلت. ادفع كاش أو بطاقة بعد الانتهاء فقط.',
+    descAr: 'السيارة اشتغلت — ادفع كاش أو بطاقة',
   },
 ];
+
+// Premium Lucide-style inline SVG icons for each step.
+function StepIcon({ index }: { index: number }) {
+  const props = { width: 22, height: 22, viewBox: '0 0 24 24', fill: 'none',
+    stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
+  if (index === 0) {
+    // MessageCircle (WhatsApp/chat)
+    return (<svg {...props}><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>);
+  }
+  if (index === 1) {
+    // Zap (lightning) — fast arrival
+    return (<svg {...props}><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>);
+  }
+  // CreditCard — payment
+  return (<svg {...props}><rect x="2" y="5" width="20" height="14" rx="2" ry="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>);
+}
 
 interface HowItWorksProps {
   lang?: 'en' | 'ar';
@@ -112,7 +128,7 @@ export default function HowItWorks({ lang = 'en' }: HowItWorksProps) {
             }}
           >
             {STEPS.map((step, i) => (
-              <StepCard key={step.number} step={step} ar={ar} isLast={i === STEPS.length - 1} />
+              <StepCard key={step.number} step={step} ar={ar} index={i} isLast={i === STEPS.length - 1} />
             ))}
           </div>
         </div>
@@ -123,7 +139,7 @@ export default function HowItWorks({ lang = 'en' }: HowItWorksProps) {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Start now — order battery service on WhatsApp | ابدأ دلوقتي"
+            aria-label="Start now — order battery service on WhatsApp | ابدأ الآن"
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -150,7 +166,7 @@ export default function HowItWorks({ lang = 'en' }: HowItWorksProps) {
             }}
           >
             <WhatsAppIcon />
-            <span>ابدأ دلوقتي | Start Now</span>
+            <span>ابدأ الآن | Start Now</span>
           </a>
         </div>
       </div>
@@ -165,7 +181,7 @@ export default function HowItWorks({ lang = 'en' }: HowItWorksProps) {
   );
 }
 
-function StepCard({ step, ar, isLast }: { step: Step; ar: boolean; isLast: boolean }) {
+function StepCard({ step, ar, index, isLast }: { step: Step; ar: boolean; index: number; isLast: boolean }) {
   return (
     <div
       style={{
@@ -177,12 +193,12 @@ function StepCard({ step, ar, isLast }: { step: Step; ar: boolean; isLast: boole
         position: 'relative',
       }}
     >
-      {/* Number circle */}
+      {/* Premium icon circle with number badge */}
       <div
         aria-hidden="true"
         style={{
-          width: '56px',
-          height: '56px',
+          width: '68px',
+          height: '68px',
           borderRadius: '50%',
           border: '2px solid var(--c-accent)',
           backgroundColor: 'var(--c-accent)',
@@ -192,15 +208,31 @@ function StepCard({ step, ar, isLast }: { step: Step; ar: boolean; isLast: boole
           flexShrink: 0,
           position: 'relative',
           zIndex: 1,
+          color: '#fff',
+          boxShadow: '0 6px 22px rgba(224,92,0,0.32)',
         }}
       >
+        <StepIcon index={index} />
+        {/* Small step-number badge in the corner */}
         <span
+          aria-hidden="true"
           style={{
+            position: 'absolute',
+            top: -8,
+            right: -8,
+            background: '#0f172a',
+            color: '#fff',
             fontFamily: 'var(--font-inter), sans-serif',
             fontWeight: 800,
-            fontSize: '1.125rem',
-            color: '#FFFFFF',
-            lineHeight: 1,
+            fontSize: 11,
+            width: 24,
+            height: 24,
+            borderRadius: '50%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            border: '2px solid var(--c-accent)',
+            letterSpacing: 0,
           }}
         >
           {step.number}

@@ -36,16 +36,17 @@ export async function generateMetadata(
       title: post.titleAr ?? post.title,
       description: post.excerptAr ?? post.excerpt,
       type: 'article',
+      url: `https://startsmartqatar.com/ar/blog/${slug}`,
       publishedTime: post.publishedAt,
       ...(post.mainImage && {
         images: [{ url: urlFor(post.mainImage).width(1200).height(630).url() }],
       }),
     },
     alternates: {
-      canonical: `/ar/blog/${slug}`,
+      canonical: `https://startsmartqatar.com/ar/blog/${slug}`,
       languages: {
-        en: `/blog/${slug}`,
-        ar: `/ar/blog/${slug}`,
+        en: `https://startsmartqatar.com/blog/${slug}`,
+        ar: `https://startsmartqatar.com/ar/blog/${slug}`,
       },
     },
   };
@@ -83,15 +84,34 @@ export default async function ArBlogPostPage(
     headline: post.titleAr ?? post.title,
     description: post.excerptAr ?? post.seoDescription ?? post.excerpt,
     datePublished: post.publishedAt,
+    dateModified: post.publishedAt,
     inLanguage: 'ar',
-    author: { '@type': 'Organization', name: 'ستارت سمارت قطر' },
+    author: {
+      '@type': 'Organization',
+      name: 'ستارت سمارت قطر',
+      url: 'https://startsmartqatar.com/ar',
+    },
     publisher: {
       '@type': 'Organization',
-      name: 'Start Smart Qatar',
+      name: 'StartSmart Qatar',
       url: 'https://startsmartqatar.com',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://startsmartqatar.com/logo1.png',
+      },
     },
     ...(imageUrl && { image: imageUrl }),
     mainEntityOfPage: { '@type': 'WebPage', '@id': `https://startsmartqatar.com/ar/blog/${slug}` },
+  };
+
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'الرئيسية', item: 'https://startsmartqatar.com/ar' },
+      { '@type': 'ListItem', position: 2, name: 'المدونة', item: 'https://startsmartqatar.com/ar/blog' },
+      { '@type': 'ListItem', position: 3, name: post.titleAr ?? post.title },
+    ],
   };
 
   const relatedPosts = related.filter((p) => p._id !== post._id).slice(0, 3);
@@ -102,6 +122,10 @@ export default async function ArBlogPostPage(
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
 
       <main dir="rtl" style={{ backgroundColor: '#FFFFFF', minHeight: '100vh', paddingTop: '80px' }}>
@@ -145,7 +169,7 @@ export default async function ArBlogPostPage(
               </time>
             )}
             <span style={{ fontFamily: 'var(--font-cairo), sans-serif', fontSize: '0.875rem', color: '#888888' }}>
-              · {readingTime} دقائق قراءة
+              · {readingTime} دقايق قراءة
             </span>
           </div>
 
@@ -188,13 +212,13 @@ export default async function ArBlogPostPage(
           {/* WhatsApp CTA */}
           <div style={{ backgroundColor: '#111111', borderRadius: '0.75rem', padding: '2rem', marginTop: '3rem', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
             <p style={{ fontFamily: 'var(--font-cairo), sans-serif', fontWeight: 700, fontSize: '1.25rem', color: '#FFFFFF', margin: 0 }}>
-              تحتاج مساعدة في البطارية؟ <span style={{ color: 'var(--c-accent)' }}>نأتي إليك.</span>
+              تحتاج مساعدة في البطارية؟ <span style={{ color: 'var(--c-accent)' }}>نصل إليك.</span>
             </p>
             <a
               href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}?text=مرحباً%2C+أحتاج+خدمة+بطارية`}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="تواصل عبر واتساب لخدمة البطارية"
+              aria-label="تواصل على الواتساب لخدمة البطارية"
               style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', backgroundColor: '#25D366', color: '#FFFFFF', fontFamily: 'var(--font-cairo), sans-serif', fontWeight: 700, fontSize: '1rem', padding: '0.875rem 2rem', borderRadius: '0.625rem', textDecoration: 'none', minHeight: '52px' }}
             >
               <WhatsAppIcon />

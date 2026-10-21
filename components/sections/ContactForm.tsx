@@ -17,7 +17,7 @@ const faqSchema = {
     {
       '@type': 'Question',
       name: 'How fast do you arrive?',
-      acceptedAnswer: { '@type': 'Answer', text: '10 minutes or less anywhere in Qatar.' },
+      acceptedAnswer: { '@type': 'Answer', text: '10 minutes or less within service areas in Qatar.' },
     },
     {
       '@type': 'Question',
@@ -37,11 +37,18 @@ const faqSchema = {
   ],
 };
 
-const FAQ_ITEMS = [
-  { q: 'How fast do you arrive?', a: '10 minutes or less anywhere in Qatar.' },
+const FAQ_ITEMS_EN = [
+  { q: 'How fast do you arrive?', a: '10 minutes or less within service areas in Qatar.' },
   { q: 'Do I pay before or after?', a: 'Always after the service is done.' },
   { q: 'What areas do you cover?', a: 'All areas across Qatar.' },
   { q: 'Do you work 24/7?', a: 'Yes, including weekends and holidays.' },
+];
+
+const FAQ_ITEMS_AR = [
+  { q: 'كم تاخذون لتوصلون؟', a: 'في أسرع وقت داخل كل مناطق الدوحة وكل مناطق قطر.' },
+  { q: 'متى أدفع؟ قبل ولا بعد؟', a: 'دايماً بعد ما نخلّص الخدمة.' },
+  { q: 'وين تغطون؟', a: 'كل مناطق قطر.' },
+  { q: 'تشتغلون ٢٤/٧؟', a: 'نعم، حتى الإجازات والويك إند.' },
 ];
 
 interface FormState {
@@ -114,7 +121,7 @@ export default function ContactForm({ lang = 'en' }: ContactFormProps) {
             </h2>
             <p style={subtitleStyle}>
               {ar
-                ? 'أرسل تفاصيلك وسنتواصل معك على واتساب في دقائق.'
+                ? 'أرسل تفاصيلك ونتواصل معك على الواتساب في دقايق.'
                 : "Fill in your details and we'll WhatsApp you in minutes."}
             </p>
           </div>
@@ -258,7 +265,7 @@ export default function ContactForm({ lang = 'en' }: ContactFormProps) {
               >
                 {ar ? 'أسئلة شائعة' : 'Common Questions'}
               </h3>
-              {FAQ_ITEMS.map((item) => (
+              {(ar ? FAQ_ITEMS_AR : FAQ_ITEMS_EN).map((item) => (
                 <FaqItem key={item.q} q={item.q} a={item.a} />
               ))}
             </div>

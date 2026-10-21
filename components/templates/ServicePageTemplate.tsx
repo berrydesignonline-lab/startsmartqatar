@@ -2,6 +2,7 @@ import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 import FloatingCTA from '@/components/ui/FloatingCTA';
 import { type ServiceData, ALL_SERVICES } from '@/lib/services-data';
+import { CITIES } from '@/lib/cities-data';
 
 const SITE_URL = 'https://startsmartqatar.com';
 
@@ -14,7 +15,7 @@ const AREAS_EN = [
 const AREAS_AR = [
   'ويست باي', 'اللؤلؤة', 'لوسيل', 'الريان',
   'مدينة خليفة', 'الوكرة', 'الدحيل', 'الخور',
-  'مويثر', 'المطار القديم', 'المنطقة الصناعية', 'كل قطر ✓',
+  'معيذر', 'المطار القديم', 'المنطقة الصناعية', 'كل قطر ✓',
 ];
 
 interface Props {
@@ -188,7 +189,7 @@ export default function ServicePageTemplate({ data, lang }: Props) {
                     {t.warranty.title}
                   </h2>
                   <p style={{ margin: '0.25rem 0 0', color: 'var(--c-muted)', fontSize: '0.875rem' }}>
-                    {t.warranty.months} {ar ? 'شهراً من تاريخ التركيب' : 'months from installation date'}
+                    {t.warranty.months} {ar ? 'شهر من تاريخ التركيب' : 'months from installation date'}
                   </p>
                 </div>
               </div>
@@ -269,6 +270,35 @@ export default function ServicePageTemplate({ data, lang }: Props) {
                 </li>
               ))}
             </ul>
+          </div>
+        </section>
+
+        {/* ── Service by City (internal links to city landing pages) ── */}
+        <section style={{ maxWidth: '860px', margin: '0 auto', padding: '3rem 1.5rem 1rem' }}>
+          <h2 style={{ fontWeight: 700, fontSize: 'clamp(1.5rem, 3vw, 1.875rem)', marginBottom: '0.75rem', color: 'var(--c-text)', textAlign: 'center' }}>
+            {ar ? `${t.h1} حسب المدينة` : `${t.h1} by City`}
+          </h2>
+          <p style={{ color: 'var(--c-muted)', textAlign: 'center', marginBottom: '1.75rem', lineHeight: 1.65 }}>
+            {ar ? 'اختر مدينتك لمعرفة المعالم القريبة ووقت الوصول المتوقع:' : 'Pick your city for local landmarks and expected arrival time:'}
+          </p>
+          <div className="svc-city-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '0.75rem' }}>
+            {CITIES.map((c) => {
+              const href = `${ar ? '/ar' : ''}/services/${data.slug}/${c.slug}`;
+              const name = ar ? c.nameAr : c.nameEn;
+              return (
+                <a key={c.slug} href={href} style={{
+                  display: 'flex', flexDirection: 'column', gap: '0.2rem',
+                  padding: '0.95rem 1.1rem', backgroundColor: 'var(--c-surface)',
+                  border: '1px solid var(--c-border)', borderRadius: '0.75rem',
+                  textDecoration: 'none', textAlign: ar ? 'right' : 'left',
+                }}>
+                  <strong style={{ color: 'var(--c-text)', fontSize: '1rem' }}>{name}</strong>
+                  <span style={{ color: 'var(--c-accent)', fontSize: '0.8125rem', fontWeight: 600 }}>
+                    {ar ? `وصول خلال ${c.responseMin} دقيقة ←` : `~${c.responseMin} min arrival →`}
+                  </span>
+                </a>
+              );
+            })}
           </div>
         </section>
 

@@ -13,8 +13,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'نصائح البطارية والسيارة — مدونة ستارت سمارت قطر',
     description: 'نصائح الخبراء حول بطاريات السيارات والمشاكل الكهربائية وصيانة المركبات في قطر.',
+    url: 'https://startsmartqatar.com/ar/blog',
   },
-  alternates: { canonical: 'https://startsmartqatar.com/ar/blog' },
+  alternates: {
+    canonical: 'https://startsmartqatar.com/ar/blog',
+    languages: { en: 'https://startsmartqatar.com/blog' },
+  },
 };
 
 export const revalidate = 60;
@@ -49,7 +53,7 @@ export default async function ArBlogPage() {
         <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '60px 24px' }}>
           {posts.length === 0 ? (
             <p style={{ textAlign: 'center', color: '#888888', fontFamily: 'var(--font-cairo), sans-serif', fontSize: '1rem' }}>
-              لا توجد مقالات حتى الآن — تابعنا قريباً.
+              ما عندنا مقالات لحد الحين — تابعنا قريب.
             </p>
           ) : (
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.75rem' }}>

@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_URL}/services/jump-start`,
     languages: { ar: `${SITE_URL}/ar/services/jump-start` },
   },
+  openGraph: { url: `${SITE_URL}/services/jump-start` },
 };
 
 export default function Page() {

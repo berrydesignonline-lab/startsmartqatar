@@ -9,7 +9,7 @@ const DISPLAY_NUMBER = `+${WHATSAPP_NUMBER.slice(0, 3)} ${WHATSAPP_NUMBER.slice(
 
 const QUICK_LINKS = [
   { label: 'Services',      labelAr: 'الخدمات',    href: '/#services', hrefAr: '/ar/#services' },
-  { label: 'How It Works',  labelAr: 'كيف يعمل',   href: '/#how',      hrefAr: '/ar/#how' },
+  { label: 'How It Works',  labelAr: 'كيف نشتغل',   href: '/#how',      hrefAr: '/ar/#how' },
   { label: 'Areas We Cover',labelAr: 'المناطق',     href: '/#areas',    hrefAr: '/ar/#areas' },
   { label: 'Blog',          labelAr: 'المدونة',     href: '/blog',      hrefAr: '/ar/blog' },
   { label: 'Contact',       labelAr: 'تواصل معنا',  href: '/#contact',  hrefAr: '/ar/#contact' },
@@ -42,19 +42,19 @@ export default function Footer({ lang = 'en' }: FooterProps) {
         {/* Col 1 — Brand */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           {/* Logo */}
-          <Link href="/" style={{ textDecoration: 'none', display: 'inline-flex', width: 'fit-content' }}>
+          <Link href={ar ? '/ar' : '/'} style={{ textDecoration: 'none', display: 'inline-flex', width: 'fit-content' }}>
             <Image
-              src="/white1.webp"
-              alt="StartSmart Logo"
-              width={160}
-              height={86}
-              style={{ objectFit: 'contain' }}
+              src="/logo1.webp"
+              alt="StartSmart Qatar Logo"
+              width={190}
+              height={52}
+              style={{ objectFit: 'contain', maxHeight: '52px' }}
             />
           </Link>
 
           {/* Tagline */}
           <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.9375rem', color: '#CCCCCC', margin: 0, lineHeight: 1.55 }}>
-            {ar ? 'بطارية وكهرباء — نجي عندك' : 'Battery & Electrical — Delivered to You'}
+            {ar ? 'بطارية وكهرباء — نصل إليك' : 'Battery & Electrical — Delivered to You'}
           </p>
 
           {/* City coverage — SEO */}
@@ -147,14 +147,14 @@ export default function Footer({ lang = 'en' }: FooterProps) {
             onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
           >
             <WhatsAppIcon />
-            <span>{DISPLAY_NUMBER}</span>
+            <span dir="ltr" style={{ unicodeBidi: 'isolate' }}>{DISPLAY_NUMBER}</span>
           </a>
 
           {/* Hours */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <span aria-hidden="true" style={{ color: 'var(--c-accent)', fontSize: '0.9rem' }}>⏱</span>
             <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.9375rem', color: '#CCCCCC' }}>
-              {ar ? 'متاح 24/7 — كل يوم' : '24/7 — Every Day'}
+              {ar ? 'متاح ٢٤/٧ — كل يوم' : '24/7 — Every Day'}
             </span>
           </div>
 
@@ -162,7 +162,7 @@ export default function Footer({ lang = 'en' }: FooterProps) {
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <span aria-hidden="true" style={{ color: 'var(--c-accent)', fontSize: '0.9rem' }}>📍</span>
             <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.9375rem', color: '#CCCCCC' }}>
-              {ar ? 'قطر — جميع المناطق' : 'Qatar — All Areas'}
+              {ar ? 'قطر — كل المناطق' : 'Qatar — All Areas'}
             </span>
           </div>
 

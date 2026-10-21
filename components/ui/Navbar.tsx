@@ -8,10 +8,11 @@ import { usePathname } from 'next/navigation';
 const WHATSAPP_URL = `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}?text=Hi%2C+I+need+battery+service`;
 
 const NAV_LINKS = [
-  { en: 'Services',      ar: 'الخدمات',   anchor: '#services', scroll: true },
-  { en: 'How it Works',  ar: 'كيف يعمل',  anchor: '#how',      scroll: true },
-  { en: 'Areas Covered', ar: 'المناطق',   anchor: '#areas',    scroll: true },
-  { en: 'Blog',          ar: 'المدونة',   anchor: '/blog',     scroll: false },
+  { en: 'Services',      ar: 'الخدمات',   anchor: '#services',  scroll: true },
+  { en: 'Batteries',     ar: 'البطاريات', anchor: '/batteries', scroll: false },
+  { en: 'How it Works',  ar: 'كيف نشتغل',  anchor: '#how',       scroll: true },
+  { en: 'Areas Covered', ar: 'المناطق',   anchor: '#areas',     scroll: true },
+  { en: 'Blog',          ar: 'المدونة',   anchor: '/blog',      scroll: false },
 ];
 
 function HamburgerIcon({ open }: { open: boolean }) {
@@ -53,8 +54,15 @@ export default function Navbar() {
   }, []);
 
   function getLinkHref(anchor: string) {
-    if (!anchor.startsWith('#')) return anchor;
-    return isHome ? anchor : `/${anchor}`;
+    // Section anchor on home page (e.g. "#services"): use plain anchor in-place
+    if (anchor.startsWith('#')) {
+      return isHome ? anchor : `${isAr ? '/ar' : '/'}${anchor}`;
+    }
+    // Non-anchor internal route (e.g. "/blog"): prefix with current locale
+    if (anchor.startsWith('/')) {
+      return isAr ? `/ar${anchor === '/' ? '' : anchor}` : anchor;
+    }
+    return anchor;
   }
 
   function handleAnchor(e: React.MouseEvent<HTMLAnchorElement>, anchor: string) {
@@ -108,7 +116,7 @@ export default function Navbar() {
             maxWidth: '1200px',
             margin: '0 auto',
             padding: '0 1.25rem',
-            height: '72px',
+            height: "80px",
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -116,13 +124,13 @@ export default function Navbar() {
           }}
         >
           {/* Logo */}
-          <Link href={isAr ? '/ar' : '/'} style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', flexShrink: 0 }}>
+          <Link href={isAr ? '/ar' : '/'} className="navbar-logo" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', flexShrink: 0 }}>
             <Image
               src="/logo1.webp"
               alt="StartSmart Qatar Logo"
-              width={130}
-              height={60}
-              style={{ objectFit: 'contain', maxHeight: '60px' }}
+              width={190}
+              height={52}
+              style={{ objectFit: 'contain', maxHeight: "52px" }}
               priority
             />
           </Link>
@@ -287,6 +295,9 @@ export default function Navbar() {
         }
         @media (max-width: 767px) {
           .nav-whatsapp-btn { display: none !important; }
+        }
+        @media (max-width: 400px) {
+          .navbar-logo img { width: 140px !important; height: 38px !important; }
         }
       `}</style>
     </>

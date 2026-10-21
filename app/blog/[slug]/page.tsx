@@ -37,16 +37,17 @@ export async function generateMetadata(
     description: post.seoDescription ?? post.excerpt,
     keywords: post.seoKeywords,
     alternates: {
-      canonical: `/blog/${slug}`,
+      canonical: `https://startsmartqatar.com/blog/${slug}`,
       languages: {
-        en: `/blog/${slug}`,
-        ar: `/ar/blog/${slug}`,
+        en: `https://startsmartqatar.com/blog/${slug}`,
+        ar: `https://startsmartqatar.com/ar/blog/${slug}`,
       },
     },
     openGraph: {
       title: post.seoTitle ?? post.title,
       description: post.seoDescription ?? post.excerpt,
       type: 'article',
+      url: `https://startsmartqatar.com/blog/${slug}`,
       publishedTime: post.publishedAt,
       ...(post.mainImage && {
         images: [{ url: urlFor(post.mainImage).width(1200).height(630).url() }],
@@ -89,15 +90,35 @@ export default async function BlogPostPage(
     '@type': 'Article',
     headline: post.title,
     description: post.seoDescription ?? post.excerpt,
+    inLanguage: 'en',
     datePublished: post.publishedAt,
-    author: { '@type': 'Organization', name: 'Start Smart Qatar' },
+    dateModified: post.publishedAt,
+    author: {
+      '@type': 'Organization',
+      name: 'StartSmart Qatar',
+      url: 'https://startsmartqatar.com',
+    },
     publisher: {
       '@type': 'Organization',
-      name: 'Start Smart Qatar',
+      name: 'StartSmart Qatar',
       url: 'https://startsmartqatar.com',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://startsmartqatar.com/logo1.png',
+      },
     },
     ...(imageUrl && { image: imageUrl }),
     mainEntityOfPage: { '@type': 'WebPage', '@id': `https://startsmartqatar.com/blog/${slug}` },
+  };
+
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://startsmartqatar.com' },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://startsmartqatar.com/blog' },
+      { '@type': 'ListItem', position: 3, name: post.title },
+    ],
   };
 
   const relatedPosts = related.filter((p) => p._id !== post._id).slice(0, 3);
@@ -108,6 +129,10 @@ export default async function BlogPostPage(
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
 
       <main style={{ backgroundColor: '#FFFFFF', minHeight: '100vh', paddingTop: '80px' }}>

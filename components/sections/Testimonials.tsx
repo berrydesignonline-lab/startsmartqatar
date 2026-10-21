@@ -101,7 +101,7 @@ export default async function Testimonials({ lang = 'en' }: TestimonialsProps) {
           <div style={{ textAlign: 'center', padding: '3rem 1rem', backgroundColor: 'var(--c-surface)', borderRadius: '1rem', border: '1px dashed var(--c-border)', marginBottom: '2.5rem' }}>
             <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>⭐</div>
             <p style={{ color: 'var(--c-text)', fontWeight: 600, fontSize: '1.125rem', marginBottom: '0.5rem' }}>
-              {ar ? 'كن أول من يقيّمنا على Google' : 'Be the first to review us on Google'}
+              {ar ? 'كن أول واحد يقيّمنا على Google' : 'Be the first to review us on Google'}
             </p>
             <p style={{ color: 'var(--c-muted)', fontSize: '0.9375rem', marginBottom: '1.5rem' }}>
               {ar ? 'جرّبت خدمتنا؟ رأيك يساعدنا ويساعد عملاء ثانيين.' : 'Used our service? Your review helps others find us.'}

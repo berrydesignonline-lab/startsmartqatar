@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_URL}/services/electrical-repair`,
     languages: { ar: `${SITE_URL}/ar/services/electrical-repair` },
   },
+  openGraph: { url: `${SITE_URL}/services/electrical-repair` },
 };
 
 export default function Page() {

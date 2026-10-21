@@ -14,7 +14,7 @@ export default function WhatsAppCTA({ lang = 'en' }: WhatsAppCTAProps) {
 
   return (
     <section
-      aria-label={ar ? 'تواصل معنا عبر واتساب' : 'Contact us on WhatsApp'}
+      aria-label={ar ? 'تواصل معنا على الواتساب' : 'Contact us on WhatsApp'}
       dir={ar ? 'rtl' : 'ltr'}
       style={{
         backgroundColor: '#25D366',
@@ -74,8 +74,8 @@ export default function WhatsAppCTA({ lang = 'en' }: WhatsAppCTAProps) {
           lang={ar ? 'ar' : 'en'}
         >
           {ar
-            ? 'تكلم معنا الحين — نرد في دقائق ونوصل في 10 دقائق'
-            : 'Chat with us now — we respond in minutes, arrive in 10.'}
+            ? 'تكلم معنا الحين — نرد في دقايق ونوصلك في أسرع وقت داخل كل مناطق الدوحة وكل مناطق قطر'
+            : 'Chat with us now — we respond in minutes, arrive in 10 (within service areas).'}
         </p>
 
         {/* Button */}
@@ -127,7 +127,7 @@ export default function WhatsAppCTA({ lang = 'en' }: WhatsAppCTAProps) {
             letterSpacing: '0.01em',
           }}
         >
-          {DISPLAY_NUMBER} — Available 24/7
+          <span dir="ltr" style={{ unicodeBidi: 'isolate' }}>{DISPLAY_NUMBER}</span> — {ar ? 'متاحين ٢٤/٧' : 'Available 24/7'}
         </p>
       </div>
 

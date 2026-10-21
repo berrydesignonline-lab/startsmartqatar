@@ -7,12 +7,19 @@ import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 import FloatingCTA from '@/components/ui/FloatingCTA';
 
+const SITE_URL = 'https://startsmartqatar.com';
+
 export const metadata: Metadata = {
   title: 'Battery & Car Tips — StartSmart Qatar Blog',
   description: 'Expert tips on car batteries, electrical issues, and vehicle care in Qatar.',
+  alternates: {
+    canonical: `${SITE_URL}/blog`,
+    languages: { ar: `${SITE_URL}/ar/blog` },
+  },
   openGraph: {
     title: 'Battery & Car Tips — StartSmart Qatar Blog',
     description: 'Expert tips on car batteries, electrical issues, and vehicle care in Qatar.',
+    url: `${SITE_URL}/blog`,
   },
 };
 

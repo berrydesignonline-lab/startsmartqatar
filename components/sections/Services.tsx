@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Script from 'next/script';
 
 const WHATSAPP_URL = `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}?text=Hi%2C+I+need+battery+service`;
-const TEL_URL = `tel:${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}`;
+const TEL_URL = `tel:+${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}`;
 
 interface Service {
   icon: React.ReactNode;
@@ -25,7 +25,7 @@ const SERVICES: Service[] = [
     titleEn: 'Battery Replacement',
     titleAr: 'تغيير البطارية',
     descEn: 'We deliver and install the right battery for your car on-site — all brands, all models.',
-    descAr: 'نوصل ونركب البطارية المناسبة لسيارتك في مكانك',
+    descAr: 'نصل إليك ونقوم بتركيب البطارية المناسبة لسيارتك في مكانك',
     ctaEn: 'Learn More →',
     ctaAr: '← اعرف أكثر',
     slug: 'battery-replacement',
@@ -36,8 +36,8 @@ const SERVICES: Service[] = [
     icon: <BoltIcon />,
     titleEn: 'Emergency Jump Start',
     titleAr: 'شحن طوارئ',
-    descEn: 'Battery flat? Our team reaches you in 10 minutes anywhere in Qatar.',
-    descAr: 'بطاريتك فرغت؟ نوصلك خلال 10 دقائق في أي مكان بقطر',
+    descEn: 'Battery flat? Our team reaches you in 10 minutes — within service areas.',
+    descAr: 'بطاريتك فرغت؟ نوصلك في أسرع وقت — داخل كل مناطق الدوحة وكل مناطق قطر',
     ctaEn: 'Learn More →',
     ctaAr: '← اعرف أكثر',
     slug: 'jump-start',
@@ -153,7 +153,7 @@ export default function Services({ lang = 'en' }: ServicesProps) {
               lang="ar"
               dir="rtl"
             >
-              خدمات متنقلة في كل أرجاء قطر — بدون انتظار، بدون ورشة
+              خدمات متنقلة في كل أرجاء قطر — بدون انتظار
             </p>
           </div>
 

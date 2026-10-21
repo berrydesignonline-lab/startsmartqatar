@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        { "type": "host", "value": "www.startsmartqatar.com" }
+      ],
+      "destination": "https://startsmartqatar.com/$1",
+      "permanent": true
+    }
+  ]
+}
